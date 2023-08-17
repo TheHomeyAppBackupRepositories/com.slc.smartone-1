@@ -1,0 +1,7014 @@
+{
+  "id": "com.slc.smartone",
+  "version": "2.2.0",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
+  "platforms": [
+    "local",
+    "cloud"
+  ],
+  "brandColor": "#202123",
+  "name": {
+    "en": "SLC SmartOne"
+  },
+  "description": {
+    "en": "Adds support for SLC SmartOne ZigBee & Z-Wave devices."
+  },
+  "category": [
+    "lights"
+  ],
+  "tags": {
+    "en": [
+      "SLC SmartOne",
+      "SLC",
+      "SmartOne",
+      "The Light Group",
+      "The Light Group AS"
+    ]
+  },
+  "permissions": [
+    "homey:wireless:zigbee",
+    "homey:wireless:zwave"
+  ],
+  "images": {
+    "large": "/assets/images/large.png",
+    "small": "/assets/images/small.png"
+  },
+  "author": {
+    "name": "SLC SmartOne",
+    "email": "maginawin@163.com"
+  },
+  "bugs": {
+    "url": "https://github.com/easyhomesrc/homey_slc_smartone_v3/issues"
+  },
+  "source": "https://github.com/easyhomesrc/homey_slc_smartone_v3.git",
+  "support": "https://github.com/easyhomesrc/homey_slc_smartone_v3.git",
+  "flow": {
+    "actions": [
+      {
+        "id": "ZG9101SAC_HP_level_step_with_onoff",
+        "title": {
+          "en": "Step level (with On/Off)"
+        },
+        "titleFormatted": {
+          "en": "Step level [[mode]] , size [[step_size]], transition [[transition_time]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24013"
+          },
+          {
+            "name": "mode",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 1,
+            "title": {
+              "en": "Mode, { 0 } means up, { 1 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "step_size",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0,
+            "title": {
+              "en": "Step size"
+            }
+          },
+          {
+            "name": "transition_time",
+            "type": "number",
+            "min": 0,
+            "max": 6553,
+            "step": 1,
+            "title": {
+              "en": "Transition time, range { 0 ~ 6553 } seconds."
+            }
+          }
+        ]
+      },
+      {
+        "id": "ZG9101SAC_HP_level_move_with_onoff",
+        "title": {
+          "en": "Move level (with On/Off)"
+        },
+        "titleFormatted": {
+          "en": "Move level [[move_mode]], rate [[rate]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24013"
+          },
+          {
+            "name": "move_mode",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 1,
+            "title": {
+              "en": "Move mode, { 0 } means up, { 1 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "rate",
+            "title": "Rate",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          }
+        ]
+      },
+      {
+        "id": "ZG9101SAC_HP_level_stop_with_onoff",
+        "title": {
+          "en": "Stop level (with On/Off)"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24013"
+          }
+        ]
+      },
+      {
+        "id": "ZG9101SAC_HP_recall_scene",
+        "title": {
+          "en": "Recall scene"
+        },
+        "titleFormatted": {
+          "en": "Group [[group_id]] recall scene [[scene_id]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24013"
+          },
+          {
+            "name": "group_id",
+            "type": "number",
+            "title": {
+              "en": "Group ID, default { 0 }"
+            }
+          },
+          {
+            "name": "scene_id",
+            "type": "number",
+            "title": {
+              "en": "Scene ID"
+            }
+          }
+        ]
+      },
+      {
+        "id": "ZG9101SAC_HP_store_scene",
+        "title": {
+          "en": "Store scene"
+        },
+        "titleFormatted": {
+          "en": "Group [[group_id]] store scene [[scene_id]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24013"
+          },
+          {
+            "name": "group_id",
+            "type": "number",
+            "title": {
+              "en": "Group ID, default { 0 }"
+            }
+          },
+          {
+            "name": "scene_id",
+            "type": "number",
+            "title": {
+              "en": "Scene ID"
+            }
+          }
+        ]
+      },
+      {
+        "id": "ZG_CCT_LIGHT_level_step_with_onoff",
+        "title": {
+          "en": "Step level (with On/Off)"
+        },
+        "titleFormatted": {
+          "en": "Step level [[mode]], size [[step_size]], transition [[transition_time]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24018_CCT"
+          },
+          {
+            "name": "mode",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 1,
+            "title": {
+              "en": "Mode, { 0 } means up, { 1 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "step_size",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0,
+            "title": {
+              "en": "Step size"
+            }
+          },
+          {
+            "name": "transition_time",
+            "type": "number",
+            "min": 0,
+            "max": 6553,
+            "step": 1,
+            "title": {
+              "en": "Transition time, range { 0 ~ 6553 } seconds."
+            }
+          }
+        ]
+      },
+      {
+        "id": "ZG_CCT_LIGHT_level_move_with_onoff",
+        "title": {
+          "en": "Move level (with On/Off)"
+        },
+        "titleFormatted": {
+          "en": "Move level [[move_mode]], rate [[rate]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24018_CCT"
+          },
+          {
+            "name": "move_mode",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 1,
+            "title": {
+              "en": "Move mode, { 0 } means up, { 1 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "rate",
+            "title": "Rate",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          }
+        ]
+      },
+      {
+        "id": "ZG_CCT_LIGHT_level_stop_with_onoff",
+        "title": {
+          "en": "Stop level (with On/Off)"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24018_CCT"
+          }
+        ]
+      },
+      {
+        "id": "ZG_CCT_LIGHT_step_color_temperature",
+        "title": {
+          "en": "Step color temperature"
+        },
+        "titleFormatted": {
+          "en": "Step color temperature [[step_mode]], size [[step_size]], transition [[transition_time]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24018_CCT"
+          },
+          {
+            "name": "step_mode",
+            "type": "number",
+            "min": 1,
+            "max": 3,
+            "step": 1,
+            "title": {
+              "en": "Step mode, { 1 } means up, { 3 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "step_size",
+            "title": "Step size",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          },
+          {
+            "name": "transition_time",
+            "type": "number",
+            "min": 0,
+            "max": 6553,
+            "step": 1,
+            "title": {
+              "en": "Transition time, range { 0 ~ 6553 } seconds."
+            }
+          }
+        ]
+      },
+      {
+        "id": "ZG_CCT_LIGHT_move_color_temperature",
+        "title": {
+          "en": "Move color temperature"
+        },
+        "titleFormatted": {
+          "en": "Move color temperature [[move_mode]], rate [[rate]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24018_CCT"
+          },
+          {
+            "name": "move_mode",
+            "type": "number",
+            "min": 0,
+            "max": 3,
+            "step": 1,
+            "title": {
+              "en": "Move mode, { 0 } means stop, { 1 } means up, { 3 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "rate",
+            "title": "Rate",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          }
+        ]
+      },
+      {
+        "id": "ZG_CCT_LIGHT_stop_move_step",
+        "title": {
+          "en": "Stop move step"
+        },
+        "hint": {
+          "en": "The stop move step command is provided to allow Move and Step commands to be stopped."
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24018_CCT"
+          }
+        ]
+      },
+      {
+        "id": "ZG_CCT_LIGHT_recall_scene",
+        "title": {
+          "en": "Recall scene"
+        },
+        "titleFormatted": {
+          "en": "Group [[group_id]] recall scene [[scene_id]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24018_CCT"
+          },
+          {
+            "name": "group_id",
+            "type": "number",
+            "title": {
+              "en": "Group ID, default { 0 }"
+            }
+          },
+          {
+            "name": "scene_id",
+            "type": "number",
+            "title": {
+              "en": "Scene ID"
+            }
+          }
+        ]
+      },
+      {
+        "id": "ZG_CCT_LIGHT_store_scene",
+        "title": {
+          "en": "Store scene"
+        },
+        "titleFormatted": {
+          "en": "Group [[group_id]] store scene [[scene_id]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24018_CCT"
+          },
+          {
+            "name": "group_id",
+            "type": "number",
+            "title": {
+              "en": "Group ID, default { 0 }"
+            }
+          },
+          {
+            "name": "scene_id",
+            "type": "number",
+            "title": {
+              "en": "Scene ID"
+            }
+          }
+        ]
+      },
+      {
+        "id": "ZG_DIM_LIGHT_level_step_with_onoff",
+        "title": {
+          "en": "Step level (with On/Off)"
+        },
+        "titleFormatted": {
+          "en": "Step level [[mode]], size [[step_size]], transition [[transition_time]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24018_DIM"
+          },
+          {
+            "name": "mode",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 1,
+            "title": {
+              "en": "Mode, { 0 } means up, { 1 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "step_size",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0,
+            "title": {
+              "en": "Step size"
+            }
+          },
+          {
+            "name": "transition_time",
+            "type": "number",
+            "min": 0,
+            "max": 6553,
+            "step": 1,
+            "title": {
+              "en": "Transition time, range { 0 ~ 6553 } seconds."
+            }
+          }
+        ]
+      },
+      {
+        "id": "ZG_DIM_LIGHT_level_move_with_onoff",
+        "title": {
+          "en": "Move level (with On/Off)"
+        },
+        "titleFormatted": {
+          "en": "Move level [[move_mode]], rate [[rate]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24018_DIM"
+          },
+          {
+            "name": "move_mode",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 1,
+            "title": {
+              "en": "Move mode, { 0 } means up, { 1 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "rate",
+            "title": "Rate",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          }
+        ]
+      },
+      {
+        "id": "ZG_DIM_LIGHT_level_stop_with_onoff",
+        "title": {
+          "en": "Stop level (with On/Off)"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24018_DIM"
+          }
+        ]
+      },
+      {
+        "id": "ZG_DIM_LIGHT_recall_scene",
+        "title": {
+          "en": "Recall scene"
+        },
+        "titleFormatted": {
+          "en": "Group [[group_id]] recall scene [[scene_id]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24018_DIM"
+          },
+          {
+            "name": "group_id",
+            "type": "number",
+            "title": {
+              "en": "Group ID, default { 0 }"
+            }
+          },
+          {
+            "name": "scene_id",
+            "type": "number",
+            "title": {
+              "en": "Scene ID"
+            }
+          }
+        ]
+      },
+      {
+        "id": "ZG_DIM_LIGHT_store_scene",
+        "title": {
+          "en": "Store scene"
+        },
+        "titleFormatted": {
+          "en": "Group [[group_id]] store scene [[scene_id]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24018_DIM"
+          },
+          {
+            "name": "group_id",
+            "type": "number",
+            "title": {
+              "en": "Group ID, default { 0 }"
+            }
+          },
+          {
+            "name": "scene_id",
+            "type": "number",
+            "title": {
+              "en": "Scene ID"
+            }
+          }
+        ]
+      },
+      {
+        "id": "ZG_COLOR_LIGHT_level_step_with_onoff",
+        "title": {
+          "en": "Step level (with On/Off)"
+        },
+        "titleFormatted": {
+          "en": "Step level [[mode]], size [[step_size]], transition [[transition_time]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24018_RGBCCT"
+          },
+          {
+            "name": "mode",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 1,
+            "title": {
+              "en": "Mode, { 0 } means up, { 1 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "step_size",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0,
+            "title": {
+              "en": "Step size"
+            }
+          },
+          {
+            "name": "transition_time",
+            "type": "number",
+            "min": 0,
+            "max": 6553,
+            "step": 1,
+            "title": {
+              "en": "Transition time, range { 0 ~ 6553 } seconds."
+            }
+          }
+        ]
+      },
+      {
+        "id": "ZG_COLOR_LIGHT_level_move_with_onoff",
+        "title": {
+          "en": "Move level (with On/Off)"
+        },
+        "titleFormatted": {
+          "en": "Move level [[move_mode]], rate [[rate]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24018_RGBCCT"
+          },
+          {
+            "name": "move_mode",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 1,
+            "title": {
+              "en": "Move mode, { 0 } means up, { 1 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "rate",
+            "title": "Rate",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          }
+        ]
+      },
+      {
+        "id": "ZG_COLOR_LIGHT_level_stop_with_onoff",
+        "title": {
+          "en": "Stop level (with On/Off)"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24018_RGBCCT"
+          }
+        ]
+      },
+      {
+        "id": "ZG_COLOR_LIGHT_move_hue",
+        "title": {
+          "en": "Move hue"
+        },
+        "titleFormatted": {
+          "en": "Move hue [[move_mode]], rate [[rate]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24018_RGBCCT"
+          },
+          {
+            "name": "move_mode",
+            "type": "number",
+            "min": 0,
+            "max": 3,
+            "step": 1,
+            "title": {
+              "en": "Move mode, { 0 } means stop, { 1 } means up, { 3 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "rate",
+            "title": "Rate",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          }
+        ]
+      },
+      {
+        "id": "ZG_COLOR_LIGHT_move_saturation",
+        "title": {
+          "en": "Move saturation"
+        },
+        "titleFormatted": {
+          "en": "Move saturation [[move_mode]], rate [[rate]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24018_RGBCCT"
+          },
+          {
+            "name": "move_mode",
+            "type": "number",
+            "min": 0,
+            "max": 3,
+            "step": 1,
+            "title": {
+              "en": "Move mode, { 0 } means stop, { 1 } means up, { 3 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "rate",
+            "title": "Rate",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          }
+        ]
+      },
+      {
+        "id": "ZG_COLOR_LIGHT_step_color_temperature",
+        "title": {
+          "en": "Step color temperature"
+        },
+        "titleFormatted": {
+          "en": "Step color temperature [[step_mode]], size [[step_size]], transition [[transition_time]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24018_RGBCCT"
+          },
+          {
+            "name": "step_mode",
+            "type": "number",
+            "min": 1,
+            "max": 3,
+            "step": 1,
+            "title": {
+              "en": "Step mode, { 1 } means up, { 3 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "step_size",
+            "title": "Step size",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          },
+          {
+            "name": "transition_time",
+            "type": "number",
+            "min": 0,
+            "max": 6553,
+            "step": 1,
+            "title": {
+              "en": "Transition time, range { 0 ~ 6553 } seconds."
+            }
+          }
+        ]
+      },
+      {
+        "id": "ZG_COLOR_LIGHT_move_color_temperature",
+        "title": {
+          "en": "Move color temperature"
+        },
+        "titleFormatted": {
+          "en": "Move color temperature [[move_mode]], rate [[rate]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24018_RGBCCT"
+          },
+          {
+            "name": "move_mode",
+            "type": "number",
+            "min": 0,
+            "max": 3,
+            "step": 1,
+            "title": {
+              "en": "Move mode, { 0 } means stop, { 1 } means up, { 3 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "rate",
+            "title": "Rate",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          }
+        ]
+      },
+      {
+        "id": "ZG_COLOR_LIGHT_stop_move_step",
+        "title": {
+          "en": "Stop move step"
+        },
+        "hint": {
+          "en": "The stop move step command is provided to allow Move and Step commands to be stopped."
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24018_RGBCCT"
+          }
+        ]
+      },
+      {
+        "id": "ZG_COLOR_LIGHT_recall_scene",
+        "title": {
+          "en": "Recall scene"
+        },
+        "titleFormatted": {
+          "en": "Group [[group_id]] recall scene [[scene_id]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24018_RGBCCT"
+          },
+          {
+            "name": "group_id",
+            "type": "number",
+            "title": {
+              "en": "Group ID, default { 0 }"
+            }
+          },
+          {
+            "name": "scene_id",
+            "type": "number",
+            "title": {
+              "en": "Scene ID"
+            }
+          }
+        ]
+      },
+      {
+        "id": "ZG_COLOR_LIGHT_store_scene",
+        "title": {
+          "en": "Store scene"
+        },
+        "titleFormatted": {
+          "en": "Group [[group_id]] store scene [[scene_id]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24018_RGBCCT"
+          },
+          {
+            "name": "group_id",
+            "type": "number",
+            "title": {
+              "en": "Group ID, default { 0 }"
+            }
+          },
+          {
+            "name": "scene_id",
+            "type": "number",
+            "title": {
+              "en": "Scene ID"
+            }
+          }
+        ]
+      },
+      {
+        "id": "S24018_RGBW_level_step_with_onoff",
+        "title": {
+          "en": "Step level (with On/Off)"
+        },
+        "titleFormatted": {
+          "en": "Step level [[mode]], size [[step_size]], transition [[transition_time]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24018_RGBW"
+          },
+          {
+            "name": "mode",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 1,
+            "title": {
+              "en": "Mode, { 0 } means up, { 1 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "step_size",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0,
+            "title": {
+              "en": "Step size"
+            }
+          },
+          {
+            "name": "transition_time",
+            "type": "number",
+            "min": 0,
+            "max": 6553,
+            "step": 1,
+            "title": {
+              "en": "Transition time, range { 0 ~ 6553 } seconds."
+            }
+          }
+        ]
+      },
+      {
+        "id": "S24018_RGBW_level_move_with_onoff",
+        "title": {
+          "en": "Move level (with On/Off)"
+        },
+        "titleFormatted": {
+          "en": "Move level [[move_mode]], rate [[rate]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24018_RGBW"
+          },
+          {
+            "name": "move_mode",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 1,
+            "title": {
+              "en": "Move mode, { 0 } means up, { 1 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "rate",
+            "title": "Rate",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          }
+        ]
+      },
+      {
+        "id": "S24018_RGBW_level_stop_with_onoff",
+        "title": {
+          "en": "Stop level (with On/Off)"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24018_RGBW"
+          }
+        ]
+      },
+      {
+        "id": "S24018_RGBW_move_hue",
+        "title": {
+          "en": "Move hue"
+        },
+        "titleFormatted": {
+          "en": "Move hue [[move_mode]], rate [[rate]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24018_RGBW"
+          },
+          {
+            "name": "move_mode",
+            "type": "number",
+            "min": 0,
+            "max": 3,
+            "step": 1,
+            "title": {
+              "en": "Move mode, { 0 } means stop, { 1 } means up, { 3 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "rate",
+            "title": "Rate",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          }
+        ]
+      },
+      {
+        "id": "S24018_RGBW_move_saturation",
+        "title": {
+          "en": "Move saturation"
+        },
+        "titleFormatted": {
+          "en": "Move saturation [[move_mode]], rate [[rate]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24018_RGBW"
+          },
+          {
+            "name": "move_mode",
+            "type": "number",
+            "min": 0,
+            "max": 3,
+            "step": 1,
+            "title": {
+              "en": "Move mode, { 0 } means stop, { 1 } means up, { 3 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "rate",
+            "title": "Rate",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          }
+        ]
+      },
+      {
+        "id": "S24018_RGBW_step_color_temperature",
+        "title": {
+          "en": "Step color temperature"
+        },
+        "titleFormatted": {
+          "en": "Step color temperature [[step_mode]], size [[step_size]], transition [[transition_time]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24018_RGBW"
+          },
+          {
+            "name": "step_mode",
+            "type": "number",
+            "min": 1,
+            "max": 3,
+            "step": 1,
+            "title": {
+              "en": "Step mode, { 1 } means up, { 3 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "step_size",
+            "title": "Step size",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          },
+          {
+            "name": "transition_time",
+            "type": "number",
+            "min": 0,
+            "max": 6553,
+            "step": 1,
+            "title": {
+              "en": "Transition time, range { 0 ~ 6553 } seconds."
+            }
+          }
+        ]
+      },
+      {
+        "id": "S24018_RGBW_move_color_temperature",
+        "title": {
+          "en": "Move color temperature"
+        },
+        "titleFormatted": {
+          "en": "Move color temperature [[move_mode]], rate [[rate]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24018_RGBW"
+          },
+          {
+            "name": "move_mode",
+            "type": "number",
+            "min": 0,
+            "max": 3,
+            "step": 1,
+            "title": {
+              "en": "Move mode, { 0 } means stop, { 1 } means up, { 3 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "rate",
+            "title": "Rate",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          }
+        ]
+      },
+      {
+        "id": "S24018_RGBW_stop_move_step",
+        "title": {
+          "en": "Stop move step"
+        },
+        "hint": {
+          "en": "The stop move step command is provided to allow Move and Step commands to be stopped."
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24018_RGBW"
+          }
+        ]
+      },
+      {
+        "id": "S24018_RGBW_recall_scene",
+        "title": {
+          "en": "Recall scene"
+        },
+        "titleFormatted": {
+          "en": "Group [[group_id]] recall scene [[scene_id]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24018_RGBW"
+          },
+          {
+            "name": "group_id",
+            "type": "number",
+            "title": {
+              "en": "Group ID, default { 0 }"
+            }
+          },
+          {
+            "name": "scene_id",
+            "type": "number",
+            "title": {
+              "en": "Scene ID"
+            }
+          }
+        ]
+      },
+      {
+        "id": "S24018_RGBW_store_scene",
+        "title": {
+          "en": "Store scene"
+        },
+        "titleFormatted": {
+          "en": "Group [[group_id]] store scene [[scene_id]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24018_RGBW"
+          },
+          {
+            "name": "group_id",
+            "type": "number",
+            "title": {
+              "en": "Group ID, default { 0 }"
+            }
+          },
+          {
+            "name": "scene_id",
+            "type": "number",
+            "title": {
+              "en": "Scene ID"
+            }
+          }
+        ]
+      },
+      {
+        "id": "S24019_level_step_with_onoff",
+        "title": {
+          "en": "Step level (with On/Off)"
+        },
+        "titleFormatted": {
+          "en": "Step level [[mode]], size [[step_size]], transition [[transition_time]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24019"
+          },
+          {
+            "name": "mode",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 1,
+            "title": {
+              "en": "Mode, { 0 } means up, { 1 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "step_size",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0,
+            "title": {
+              "en": "Step size"
+            }
+          },
+          {
+            "name": "transition_time",
+            "type": "number",
+            "min": 0,
+            "max": 6553,
+            "step": 1,
+            "title": {
+              "en": "Transition time, range { 0 ~ 6553 } seconds."
+            }
+          }
+        ]
+      },
+      {
+        "id": "S24019_level_move_with_onoff",
+        "title": {
+          "en": "Move level (with On/Off)"
+        },
+        "titleFormatted": {
+          "en": "Move level [[move_mode]], rate [[rate]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24019"
+          },
+          {
+            "name": "move_mode",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 1,
+            "title": {
+              "en": "Move mode, { 0 } means up, { 1 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "rate",
+            "title": "Rate",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          }
+        ]
+      },
+      {
+        "id": "S24019_level_stop_with_onoff",
+        "title": {
+          "en": "Stop level (with On/Off)"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24019"
+          }
+        ]
+      },
+      {
+        "id": "S24019_recall_scene",
+        "title": {
+          "en": "Recall scene"
+        },
+        "titleFormatted": {
+          "en": "Group [[group_id]] recall scene [[scene_id]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24019"
+          },
+          {
+            "name": "group_id",
+            "type": "number",
+            "title": {
+              "en": "Group ID, default { 0 }"
+            }
+          },
+          {
+            "name": "scene_id",
+            "type": "number",
+            "title": {
+              "en": "Scene ID"
+            }
+          }
+        ]
+      },
+      {
+        "id": "S24019_store_scene",
+        "title": {
+          "en": "Store scene"
+        },
+        "titleFormatted": {
+          "en": "Group [[group_id]] store scene [[scene_id]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24019"
+          },
+          {
+            "name": "group_id",
+            "type": "number",
+            "title": {
+              "en": "Group ID, default { 0 }"
+            }
+          },
+          {
+            "name": "scene_id",
+            "type": "number",
+            "title": {
+              "en": "Scene ID"
+            }
+          }
+        ]
+      },
+      {
+        "id": "S24020_level_step_with_onoff",
+        "title": {
+          "en": "Step level (with On/Off)"
+        },
+        "titleFormatted": {
+          "en": "Step level [[mode]], size [[step_size]], transition [[transition_time]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24020"
+          },
+          {
+            "name": "mode",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 1,
+            "title": {
+              "en": "Mode, { 0 } means up, { 1 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "step_size",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0,
+            "title": {
+              "en": "Step size"
+            }
+          },
+          {
+            "name": "transition_time",
+            "type": "number",
+            "min": 0,
+            "max": 6553,
+            "step": 1,
+            "title": {
+              "en": "Transition time, range { 0 ~ 6553 } seconds."
+            }
+          }
+        ]
+      },
+      {
+        "id": "S24020_level_move_with_onoff",
+        "title": {
+          "en": "Move level (with On/Off)"
+        },
+        "titleFormatted": {
+          "en": "Move level [[move_mode]], rate [[rate]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24020"
+          },
+          {
+            "name": "move_mode",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 1,
+            "title": {
+              "en": "Move mode, { 0 } means up, { 1 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "rate",
+            "title": "Rate",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          }
+        ]
+      },
+      {
+        "id": "S24020_level_stop_with_onoff",
+        "title": {
+          "en": "Stop level (with On/Off)"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24020"
+          }
+        ]
+      },
+      {
+        "id": "S24020_recall_scene",
+        "title": {
+          "en": "Recall scene"
+        },
+        "titleFormatted": {
+          "en": "Group [[group_id]] recall scene [[scene_id]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24020"
+          },
+          {
+            "name": "group_id",
+            "type": "number",
+            "title": {
+              "en": "Group ID, default { 0 }"
+            }
+          },
+          {
+            "name": "scene_id",
+            "type": "number",
+            "title": {
+              "en": "Scene ID"
+            }
+          }
+        ]
+      },
+      {
+        "id": "S24020_store_scene",
+        "title": {
+          "en": "Store scene"
+        },
+        "titleFormatted": {
+          "en": "Group [[group_id]] store scene [[scene_id]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24020"
+          },
+          {
+            "name": "group_id",
+            "type": "number",
+            "title": {
+              "en": "Group ID, default { 0 }"
+            }
+          },
+          {
+            "name": "scene_id",
+            "type": "number",
+            "title": {
+              "en": "Scene ID"
+            }
+          }
+        ]
+      },
+      {
+        "id": "S24021_level_step_with_onoff",
+        "title": {
+          "en": "Step level (with On/Off)"
+        },
+        "titleFormatted": {
+          "en": "Step level [[mode]], size [[step_size]], transition [[transition_time]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24021"
+          },
+          {
+            "name": "mode",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 1,
+            "title": {
+              "en": "Mode, { 0 } means up, { 1 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "step_size",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0,
+            "title": {
+              "en": "Step size"
+            }
+          },
+          {
+            "name": "transition_time",
+            "type": "number",
+            "min": 0,
+            "max": 6553,
+            "step": 1,
+            "title": {
+              "en": "Transition time, range { 0 ~ 6553 } seconds."
+            }
+          }
+        ]
+      },
+      {
+        "id": "S24021_level_move_with_onoff",
+        "title": {
+          "en": "Move level (with On/Off)"
+        },
+        "titleFormatted": {
+          "en": "Move level [[move_mode]], rate [[rate]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24021"
+          },
+          {
+            "name": "move_mode",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 1,
+            "title": {
+              "en": "Move mode, { 0 } means up, { 1 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "rate",
+            "title": "Rate",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          }
+        ]
+      },
+      {
+        "id": "S24021_level_stop_with_onoff",
+        "title": {
+          "en": "Stop level (with On/Off)"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24021"
+          }
+        ]
+      },
+      {
+        "id": "S24021_recall_scene",
+        "title": {
+          "en": "Recall scene"
+        },
+        "titleFormatted": {
+          "en": "Group [[group_id]] recall scene [[scene_id]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24021"
+          },
+          {
+            "name": "group_id",
+            "type": "number",
+            "title": {
+              "en": "Group ID, default { 0 }"
+            }
+          },
+          {
+            "name": "scene_id",
+            "type": "number",
+            "title": {
+              "en": "Scene ID"
+            }
+          }
+        ]
+      },
+      {
+        "id": "S24021_store_scene",
+        "title": {
+          "en": "Store scene"
+        },
+        "titleFormatted": {
+          "en": "Group [[group_id]] store scene [[scene_id]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S24021"
+          },
+          {
+            "name": "group_id",
+            "type": "number",
+            "title": {
+              "en": "Group ID, default { 0 }"
+            }
+          },
+          {
+            "name": "scene_id",
+            "type": "number",
+            "title": {
+              "en": "Scene ID"
+            }
+          }
+        ]
+      },
+      {
+        "id": "S32050_level_step_with_onoff",
+        "title": {
+          "en": "Step level (with On/Off)"
+        },
+        "titleFormatted": {
+          "en": "Step level [[mode]], size [[step_size]], transition [[transition_time]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32050"
+          },
+          {
+            "name": "mode",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 1,
+            "title": {
+              "en": "Mode, { 0 } means up, { 1 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "step_size",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0,
+            "title": {
+              "en": "Step size"
+            }
+          },
+          {
+            "name": "transition_time",
+            "type": "number",
+            "min": 0,
+            "max": 6553,
+            "step": 1,
+            "title": {
+              "en": "Transition time, range { 0 ~ 6553 } seconds."
+            }
+          }
+        ]
+      },
+      {
+        "id": "S32050_level_move_with_onoff",
+        "title": {
+          "en": "Move level (with On/Off)"
+        },
+        "titleFormatted": {
+          "en": "Move level [[move_mode]], rate [[rate]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32050"
+          },
+          {
+            "name": "move_mode",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 1,
+            "title": {
+              "en": "Move mode, { 0 } means up, { 1 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "rate",
+            "title": "Rate",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          }
+        ]
+      },
+      {
+        "id": "S32050_level_stop_with_onoff",
+        "title": {
+          "en": "Stop level (with On/Off)"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32050"
+          }
+        ]
+      },
+      {
+        "id": "S32050_recall_scene",
+        "title": {
+          "en": "Recall scene"
+        },
+        "titleFormatted": {
+          "en": "Group [[group_id]] recall scene [[scene_id]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32050"
+          },
+          {
+            "name": "group_id",
+            "type": "number",
+            "title": {
+              "en": "Group ID, default { 0 }"
+            }
+          },
+          {
+            "name": "scene_id",
+            "type": "number",
+            "title": {
+              "en": "Scene ID"
+            }
+          }
+        ]
+      },
+      {
+        "id": "S32050_store_scene",
+        "title": {
+          "en": "Store scene"
+        },
+        "titleFormatted": {
+          "en": "Group [[group_id]] store scene [[scene_id]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32050"
+          },
+          {
+            "name": "group_id",
+            "type": "number",
+            "title": {
+              "en": "Group ID, default { 0 }"
+            }
+          },
+          {
+            "name": "scene_id",
+            "type": "number",
+            "title": {
+              "en": "Scene ID"
+            }
+          }
+        ]
+      },
+      {
+        "id": "S32051_level_step_with_onoff",
+        "title": {
+          "en": "Step level (with On/Off)"
+        },
+        "titleFormatted": {
+          "en": "Step level [[mode]], size [[step_size]], transition [[transition_time]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32051"
+          },
+          {
+            "name": "mode",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 1,
+            "title": {
+              "en": "Mode, { 0 } means up, { 1 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "step_size",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0,
+            "title": {
+              "en": "Step size"
+            }
+          },
+          {
+            "name": "transition_time",
+            "type": "number",
+            "min": 0,
+            "max": 6553,
+            "step": 1,
+            "title": {
+              "en": "Transition time, range { 0 ~ 6553 } seconds."
+            }
+          }
+        ]
+      },
+      {
+        "id": "S32051_level_move_with_onoff",
+        "title": {
+          "en": "Move level (with On/Off)"
+        },
+        "titleFormatted": {
+          "en": "Move level [[move_mode]], rate [[rate]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32051"
+          },
+          {
+            "name": "move_mode",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 1,
+            "title": {
+              "en": "Move mode, { 0 } means up, { 1 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "rate",
+            "title": "Rate",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          }
+        ]
+      },
+      {
+        "id": "S32051_level_stop_with_onoff",
+        "title": {
+          "en": "Stop level (with On/Off)"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32051"
+          }
+        ]
+      },
+      {
+        "id": "S32051_recall_scene",
+        "title": {
+          "en": "Recall scene"
+        },
+        "titleFormatted": {
+          "en": "Group [[group_id]] recall scene [[scene_id]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32051"
+          },
+          {
+            "name": "group_id",
+            "type": "number",
+            "title": {
+              "en": "Group ID, default { 0 }"
+            }
+          },
+          {
+            "name": "scene_id",
+            "type": "number",
+            "title": {
+              "en": "Scene ID"
+            }
+          }
+        ]
+      },
+      {
+        "id": "S32051_store_scene",
+        "title": {
+          "en": "Store scene"
+        },
+        "titleFormatted": {
+          "en": "Group [[group_id]] store scene [[scene_id]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32051"
+          },
+          {
+            "name": "group_id",
+            "type": "number",
+            "title": {
+              "en": "Group ID, default { 0 }"
+            }
+          },
+          {
+            "name": "scene_id",
+            "type": "number",
+            "title": {
+              "en": "Scene ID"
+            }
+          }
+        ]
+      },
+      {
+        "id": "S32052_level_step_with_onoff",
+        "title": {
+          "en": "Step level (with On/Off)"
+        },
+        "titleFormatted": {
+          "en": "Step level [[mode]], size [[step_size]], transition [[transition_time]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32052"
+          },
+          {
+            "name": "mode",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 1,
+            "title": {
+              "en": "Mode, { 0 } means up, { 1 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "step_size",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0,
+            "title": {
+              "en": "Step size"
+            }
+          },
+          {
+            "name": "transition_time",
+            "type": "number",
+            "min": 0,
+            "max": 6553,
+            "step": 1,
+            "title": {
+              "en": "Transition time, range { 0 ~ 6553 } seconds."
+            }
+          }
+        ]
+      },
+      {
+        "id": "S32052_level_move_with_onoff",
+        "title": {
+          "en": "Move level (with On/Off)"
+        },
+        "titleFormatted": {
+          "en": "Move level [[move_mode]], rate [[rate]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32052"
+          },
+          {
+            "name": "move_mode",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 1,
+            "title": {
+              "en": "Move mode, { 0 } means up, { 1 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "rate",
+            "title": "Rate",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          }
+        ]
+      },
+      {
+        "id": "S32052_level_stop_with_onoff",
+        "title": {
+          "en": "Stop level (with On/Off)"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32052"
+          }
+        ]
+      },
+      {
+        "id": "S32052_step_color_temperature",
+        "title": {
+          "en": "Step color temperature"
+        },
+        "titleFormatted": {
+          "en": "Step color temperature [[step_mode]], size [[step_size]], transition [[transition_time]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32052"
+          },
+          {
+            "name": "step_mode",
+            "type": "number",
+            "min": 1,
+            "max": 3,
+            "step": 1,
+            "title": {
+              "en": "Step mode, { 1 } means up, { 3 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "step_size",
+            "title": "Step size",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          },
+          {
+            "name": "transition_time",
+            "type": "number",
+            "min": 0,
+            "max": 6553,
+            "step": 1,
+            "title": {
+              "en": "Transition time, range { 0 ~ 6553 } seconds."
+            }
+          }
+        ]
+      },
+      {
+        "id": "S32052_move_color_temperature",
+        "title": {
+          "en": "Move color temperature"
+        },
+        "titleFormatted": {
+          "en": "Move color temperature [[move_mode]], rate [[rate]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32052"
+          },
+          {
+            "name": "move_mode",
+            "type": "number",
+            "min": 0,
+            "max": 3,
+            "step": 1,
+            "title": {
+              "en": "Move mode, { 0 } means stop, { 1 } means up, { 3 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "rate",
+            "title": "Rate",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          }
+        ]
+      },
+      {
+        "id": "S32052_stop_move_step",
+        "title": {
+          "en": "Stop move step"
+        },
+        "hint": {
+          "en": "The stop move step command is provided to allow Move and Step commands to be stopped."
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32052"
+          }
+        ]
+      },
+      {
+        "id": "S32052_recall_scene",
+        "title": {
+          "en": "Recall scene"
+        },
+        "titleFormatted": {
+          "en": "Group [[group_id]] recall scene [[scene_id]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32052"
+          },
+          {
+            "name": "group_id",
+            "type": "number",
+            "title": {
+              "en": "Group ID, default { 0 }"
+            }
+          },
+          {
+            "name": "scene_id",
+            "type": "number",
+            "title": {
+              "en": "Scene ID"
+            }
+          }
+        ]
+      },
+      {
+        "id": "S32052_store_scene",
+        "title": {
+          "en": "Store scene"
+        },
+        "titleFormatted": {
+          "en": "Group [[group_id]] store scene [[scene_id]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32052"
+          },
+          {
+            "name": "group_id",
+            "type": "number",
+            "title": {
+              "en": "Group ID, default { 0 }"
+            }
+          },
+          {
+            "name": "scene_id",
+            "type": "number",
+            "title": {
+              "en": "Scene ID"
+            }
+          }
+        ]
+      },
+      {
+        "id": "S32053_level_step_with_onoff",
+        "title": {
+          "en": "Step level (with On/Off)"
+        },
+        "titleFormatted": {
+          "en": "Step level [[mode]], size [[step_size]], transition [[transition_time]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32053"
+          },
+          {
+            "name": "mode",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 1,
+            "title": {
+              "en": "Mode, { 0 } means up, { 1 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "step_size",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0,
+            "title": {
+              "en": "Step size"
+            }
+          },
+          {
+            "name": "transition_time",
+            "type": "number",
+            "min": 0,
+            "max": 6553,
+            "step": 1,
+            "title": {
+              "en": "Transition time, range { 0 ~ 6553 } seconds."
+            }
+          }
+        ]
+      },
+      {
+        "id": "S32053_level_move_with_onoff",
+        "title": {
+          "en": "Move level (with On/Off)"
+        },
+        "titleFormatted": {
+          "en": "Move level [[move_mode]], rate [[rate]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32053"
+          },
+          {
+            "name": "move_mode",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 1,
+            "title": {
+              "en": "Move mode, { 0 } means up, { 1 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "rate",
+            "title": "Rate",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          }
+        ]
+      },
+      {
+        "id": "S32053_level_stop_with_onoff",
+        "title": {
+          "en": "Stop level (with On/Off)"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32053"
+          }
+        ]
+      },
+      {
+        "id": "S32053_recall_scene",
+        "title": {
+          "en": "Recall scene"
+        },
+        "titleFormatted": {
+          "en": "Group [[group_id]] recall scene [[scene_id]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32053"
+          },
+          {
+            "name": "group_id",
+            "type": "number",
+            "title": {
+              "en": "Group ID, default { 0 }"
+            }
+          },
+          {
+            "name": "scene_id",
+            "type": "number",
+            "title": {
+              "en": "Scene ID"
+            }
+          }
+        ]
+      },
+      {
+        "id": "S32053_store_scene",
+        "title": {
+          "en": "Store scene"
+        },
+        "titleFormatted": {
+          "en": "Group [[group_id]] store scene [[scene_id]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32053"
+          },
+          {
+            "name": "group_id",
+            "type": "number",
+            "title": {
+              "en": "Group ID, default { 0 }"
+            }
+          },
+          {
+            "name": "scene_id",
+            "type": "number",
+            "title": {
+              "en": "Scene ID"
+            }
+          }
+        ]
+      },
+      {
+        "id": "S32054_level_step_with_onoff",
+        "title": {
+          "en": "Step level (with On/Off)"
+        },
+        "titleFormatted": {
+          "en": "Step level [[mode]], size [[step_size]], transition [[transition_time]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32054"
+          },
+          {
+            "name": "mode",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 1,
+            "title": {
+              "en": "Mode, { 0 } means up, { 1 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "step_size",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0,
+            "title": {
+              "en": "Step size"
+            }
+          },
+          {
+            "name": "transition_time",
+            "type": "number",
+            "min": 0,
+            "max": 6553,
+            "step": 1,
+            "title": {
+              "en": "Transition time, range { 0 ~ 6553 } seconds."
+            }
+          }
+        ]
+      },
+      {
+        "id": "S32054_level_move_with_onoff",
+        "title": {
+          "en": "Move level (with On/Off)"
+        },
+        "titleFormatted": {
+          "en": "Move level [[move_mode]], rate [[rate]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32054"
+          },
+          {
+            "name": "move_mode",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 1,
+            "title": {
+              "en": "Move mode, { 0 } means up, { 1 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "rate",
+            "title": "Rate",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          }
+        ]
+      },
+      {
+        "id": "S32054_level_stop_with_onoff",
+        "title": {
+          "en": "Stop level (with On/Off)"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32054"
+          }
+        ]
+      },
+      {
+        "id": "S32054_recall_scene",
+        "title": {
+          "en": "Recall scene"
+        },
+        "titleFormatted": {
+          "en": "Group [[group_id]] recall scene [[scene_id]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32054"
+          },
+          {
+            "name": "group_id",
+            "type": "number",
+            "title": {
+              "en": "Group ID, default { 0 }"
+            }
+          },
+          {
+            "name": "scene_id",
+            "type": "number",
+            "title": {
+              "en": "Scene ID"
+            }
+          }
+        ]
+      },
+      {
+        "id": "S32054_store_scene",
+        "title": {
+          "en": "Store scene"
+        },
+        "titleFormatted": {
+          "en": "Group [[group_id]] store scene [[scene_id]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32054"
+          },
+          {
+            "name": "group_id",
+            "type": "number",
+            "title": {
+              "en": "Group ID, default { 0 }"
+            }
+          },
+          {
+            "name": "scene_id",
+            "type": "number",
+            "title": {
+              "en": "Scene ID"
+            }
+          }
+        ]
+      },
+      {
+        "id": "S32055_level_step_with_onoff",
+        "title": {
+          "en": "Step level (with On/Off)"
+        },
+        "titleFormatted": {
+          "en": "Step level [[mode]], size [[step_size]], transition [[transition_time]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32055"
+          },
+          {
+            "name": "mode",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 1,
+            "title": {
+              "en": "Mode, { 0 } means up, { 1 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "step_size",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0,
+            "title": {
+              "en": "Step size"
+            }
+          },
+          {
+            "name": "transition_time",
+            "type": "number",
+            "min": 0,
+            "max": 6553,
+            "step": 1,
+            "title": {
+              "en": "Transition time, range { 0 ~ 6553 } seconds."
+            }
+          }
+        ]
+      },
+      {
+        "id": "S32055_level_move_with_onoff",
+        "title": {
+          "en": "Move level (with On/Off)"
+        },
+        "titleFormatted": {
+          "en": "Move level [[move_mode]], rate [[rate]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32055"
+          },
+          {
+            "name": "move_mode",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 1,
+            "title": {
+              "en": "Move mode, { 0 } means up, { 1 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "rate",
+            "title": "Rate",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          }
+        ]
+      },
+      {
+        "id": "S32055_level_stop_with_onoff",
+        "title": {
+          "en": "Stop level (with On/Off)"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32055"
+          }
+        ]
+      },
+      {
+        "id": "S32055_step_color_temperature",
+        "title": {
+          "en": "Step color temperature"
+        },
+        "titleFormatted": {
+          "en": "Step color temperature [[step_mode]], size [[step_size]], transition [[transition_time]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32055"
+          },
+          {
+            "name": "step_mode",
+            "type": "number",
+            "min": 1,
+            "max": 3,
+            "step": 1,
+            "title": {
+              "en": "Step mode, { 1 } means up, { 3 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "step_size",
+            "title": "Step size",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          },
+          {
+            "name": "transition_time",
+            "type": "number",
+            "min": 0,
+            "max": 6553,
+            "step": 1,
+            "title": {
+              "en": "Transition time, range { 0 ~ 6553 } seconds."
+            }
+          }
+        ]
+      },
+      {
+        "id": "S32055_move_color_temperature",
+        "title": {
+          "en": "Move color temperature"
+        },
+        "titleFormatted": {
+          "en": "Move color temperature [[move_mode]], rate [[rate]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32055"
+          },
+          {
+            "name": "move_mode",
+            "type": "number",
+            "min": 0,
+            "max": 3,
+            "step": 1,
+            "title": {
+              "en": "Move mode, { 0 } means stop, { 1 } means up, { 3 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "rate",
+            "title": "Rate",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          }
+        ]
+      },
+      {
+        "id": "S32055_stop_move_step",
+        "title": {
+          "en": "Stop move step"
+        },
+        "hint": {
+          "en": "The stop move step command is provided to allow Move and Step commands to be stopped."
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32055"
+          }
+        ]
+      },
+      {
+        "id": "S32055_recall_scene",
+        "title": {
+          "en": "Recall scene"
+        },
+        "titleFormatted": {
+          "en": "Group [[group_id]] recall scene [[scene_id]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32055"
+          },
+          {
+            "name": "group_id",
+            "type": "number",
+            "title": {
+              "en": "Group ID, default { 0 }"
+            }
+          },
+          {
+            "name": "scene_id",
+            "type": "number",
+            "title": {
+              "en": "Scene ID"
+            }
+          }
+        ]
+      },
+      {
+        "id": "S32055_store_scene",
+        "title": {
+          "en": "Store scene"
+        },
+        "titleFormatted": {
+          "en": "Group [[group_id]] store scene [[scene_id]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32055"
+          },
+          {
+            "name": "group_id",
+            "type": "number",
+            "title": {
+              "en": "Group ID, default { 0 }"
+            }
+          },
+          {
+            "name": "scene_id",
+            "type": "number",
+            "title": {
+              "en": "Scene ID"
+            }
+          }
+        ]
+      },
+      {
+        "id": "S32056_level_step_with_onoff",
+        "title": {
+          "en": "Step level (with On/Off)"
+        },
+        "titleFormatted": {
+          "en": "Step level [[mode]], size [[step_size]], transition [[transition_time]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32056"
+          },
+          {
+            "name": "mode",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 1,
+            "title": {
+              "en": "Mode, { 0 } means up, { 1 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "step_size",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0,
+            "title": {
+              "en": "Step size"
+            }
+          },
+          {
+            "name": "transition_time",
+            "type": "number",
+            "min": 0,
+            "max": 6553,
+            "step": 1,
+            "title": {
+              "en": "Transition time, range { 0 ~ 6553 } seconds."
+            }
+          }
+        ]
+      },
+      {
+        "id": "S32056_level_move_with_onoff",
+        "title": {
+          "en": "Move level (with On/Off)"
+        },
+        "titleFormatted": {
+          "en": "Move level [[move_mode]], rate [[rate]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32056"
+          },
+          {
+            "name": "move_mode",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 1,
+            "title": {
+              "en": "Move mode, { 0 } means up, { 1 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "rate",
+            "title": "Rate",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          }
+        ]
+      },
+      {
+        "id": "S32056_level_stop_with_onoff",
+        "title": {
+          "en": "Stop level (with On/Off)"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32056"
+          }
+        ]
+      },
+      {
+        "id": "S32056_move_hue",
+        "title": {
+          "en": "Move hue"
+        },
+        "titleFormatted": {
+          "en": "Move hue [[move_mode]], rate [[rate]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32056"
+          },
+          {
+            "name": "move_mode",
+            "type": "number",
+            "min": 0,
+            "max": 3,
+            "step": 1,
+            "title": {
+              "en": "Move mode, { 0 } means stop, { 1 } means up, { 3 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "rate",
+            "title": "Rate",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          }
+        ]
+      },
+      {
+        "id": "S32056_move_saturation",
+        "title": {
+          "en": "Move saturation"
+        },
+        "titleFormatted": {
+          "en": "Move saturation [[move_mode]], rate [[rate]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32056"
+          },
+          {
+            "name": "move_mode",
+            "type": "number",
+            "min": 0,
+            "max": 3,
+            "step": 1,
+            "title": {
+              "en": "Move mode, { 0 } means stop, { 1 } means up, { 3 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "rate",
+            "title": "Rate",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          }
+        ]
+      },
+      {
+        "id": "S32056_step_color_temperature",
+        "title": {
+          "en": "Step color temperature"
+        },
+        "titleFormatted": {
+          "en": "Step color temperature [[step_mode]], size [[step_size]], transition [[transition_time]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32056"
+          },
+          {
+            "name": "step_mode",
+            "type": "number",
+            "min": 1,
+            "max": 3,
+            "step": 1,
+            "title": {
+              "en": "Step mode, { 1 } means up, { 3 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "step_size",
+            "title": "Step size",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          },
+          {
+            "name": "transition_time",
+            "type": "number",
+            "min": 0,
+            "max": 6553,
+            "step": 1,
+            "title": {
+              "en": "Transition time, range { 0 ~ 6553 } seconds."
+            }
+          }
+        ]
+      },
+      {
+        "id": "S32056_move_color_temperature",
+        "title": {
+          "en": "Move color temperature"
+        },
+        "titleFormatted": {
+          "en": "Move color temperature [[move_mode]], rate [[rate]]"
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32056"
+          },
+          {
+            "name": "move_mode",
+            "type": "number",
+            "min": 0,
+            "max": 3,
+            "step": 1,
+            "title": {
+              "en": "Move mode, { 0 } means stop, { 1 } means up, { 3 } means down, other values are invalid."
+            }
+          },
+          {
+            "name": "rate",
+            "title": "Rate",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          }
+        ]
+      },
+      {
+        "id": "S32056_stop_move_step",
+        "title": {
+          "en": "Stop move step"
+        },
+        "hint": {
+          "en": "The stop move step command is provided to allow Move and Step commands to be stopped."
+        },
+        "duration": false,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32056"
+          }
+        ]
+      },
+      {
+        "id": "S32056_recall_scene",
+        "title": {
+          "en": "Recall scene"
+        },
+        "titleFormatted": {
+          "en": "Group [[group_id]] recall scene [[scene_id]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32056"
+          },
+          {
+            "name": "group_id",
+            "type": "number",
+            "title": {
+              "en": "Group ID, default { 0 }"
+            }
+          },
+          {
+            "name": "scene_id",
+            "type": "number",
+            "title": {
+              "en": "Scene ID"
+            }
+          }
+        ]
+      },
+      {
+        "id": "S32056_store_scene",
+        "title": {
+          "en": "Store scene"
+        },
+        "titleFormatted": {
+          "en": "Group [[group_id]] store scene [[scene_id]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S32056"
+          },
+          {
+            "name": "group_id",
+            "type": "number",
+            "title": {
+              "en": "Group ID, default { 0 }"
+            }
+          },
+          {
+            "name": "scene_id",
+            "type": "number",
+            "title": {
+              "en": "Scene ID"
+            }
+          }
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "id": "ZG2833K2_EU07_on",
+        "title": {
+          "en": "On"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57001"
+          }
+        ]
+      },
+      {
+        "id": "ZG2833K2_EU07_off",
+        "title": {
+          "en": "Off"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57001"
+          }
+        ]
+      },
+      {
+        "id": "ZG2833K2_EU07_level_move_with_onoff",
+        "title": {
+          "en": "Move level (with On/Off)"
+        },
+        "tokens": [
+          {
+            "name": "move_mode",
+            "type": "number",
+            "title": {
+              "en": "Move mode"
+            },
+            "example": 0
+          },
+          {
+            "name": "rate",
+            "type": "number",
+            "title": {
+              "en": "Rate"
+            },
+            "example": 0.2
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57001"
+          }
+        ]
+      },
+      {
+        "id": "ZG2833K2_EU07_level_stop_with_onoff",
+        "title": {
+          "en": "Stop level (with On/Off)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57001"
+          }
+        ]
+      },
+      {
+        "id": "ZG2833K8_EU05_on",
+        "title": {
+          "en": "On"
+        },
+        "titleFormatted": {
+          "en": "Group [[group]] on"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57003"
+          },
+          {
+            "name": "group",
+            "type": "dropdown",
+            "title": {
+              "en": "Group"
+            },
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "Group 1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "Group 2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "Group 3"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "Group 4"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ZG2833K8_EU05_off",
+        "title": {
+          "en": "Off"
+        },
+        "titleFormatted": {
+          "en": "Group [[group]] off"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57003"
+          },
+          {
+            "name": "group",
+            "type": "dropdown",
+            "title": {
+              "en": "Group"
+            },
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "Group 1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "Group 2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "Group 3"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "Group 4"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ZG2833K8_EU05_level_move_with_onoff",
+        "title": {
+          "en": "Move level (with On/Off)"
+        },
+        "titleFormatted": {
+          "en": "Group [[group]] move level"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57003"
+          },
+          {
+            "name": "group",
+            "type": "dropdown",
+            "title": {
+              "en": "Group"
+            },
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "Group 1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "Group 2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "Group 3"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "Group 4"
+                }
+              }
+            ]
+          }
+        ],
+        "tokens": [
+          {
+            "name": "move_mode",
+            "type": "number",
+            "title": {
+              "en": "Move mode"
+            },
+            "example": 0
+          },
+          {
+            "name": "rate",
+            "type": "number",
+            "title": {
+              "en": "Rate"
+            },
+            "example": 0.2
+          }
+        ]
+      },
+      {
+        "id": "ZG2833K8_EU05_level_stop_with_onoff",
+        "title": {
+          "en": "Stop level (with On/Off)"
+        },
+        "titleFormatted": {
+          "en": "Group [[group]] stop level"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57003"
+          },
+          {
+            "name": "group",
+            "type": "dropdown",
+            "title": {
+              "en": "Group"
+            },
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "Group 1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "Group 2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "Group 3"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "Group 4"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ZGRC_KEY_002_on",
+        "title": {
+          "en": "On"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57005"
+          }
+        ]
+      },
+      {
+        "id": "ZGRC_KEY_002_off",
+        "title": {
+          "en": "Off"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57005"
+          }
+        ]
+      },
+      {
+        "id": "ZGRC_KEY_002_level_step_with_onoff",
+        "title": {
+          "en": "Step level (with On/Off)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57005"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "mode",
+            "type": "number",
+            "title": {
+              "en": "Mode"
+            },
+            "example": 0
+          },
+          {
+            "name": "step_size",
+            "type": "number",
+            "title": {
+              "en": "Step size"
+            },
+            "example": 0.2
+          },
+          {
+            "name": "transition_time",
+            "type": "number",
+            "title": {
+              "en": "Transition time"
+            },
+            "example": 0
+          }
+        ]
+      },
+      {
+        "id": "ZGRC_KEY_002_level_move_with_onoff",
+        "title": {
+          "en": "Move level (with On/Off)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57005"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "move_mode",
+            "type": "number",
+            "title": {
+              "en": "Move mode"
+            },
+            "example": 0
+          },
+          {
+            "name": "rate",
+            "type": "number",
+            "title": {
+              "en": "Rate"
+            },
+            "example": 0.2
+          }
+        ]
+      },
+      {
+        "id": "ZGRC_KEY_002_level_stop_with_onoff",
+        "title": {
+          "en": "Stop level (with On/Off)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57005"
+          }
+        ]
+      },
+      {
+        "id": "ZGRC_KEY_002_move_to_color_temperature",
+        "title": {
+          "en": "Move to color temperature"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57005"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "color_temperature",
+            "type": "number",
+            "title": {
+              "en": "Color temperature"
+            },
+            "example": 0
+          },
+          {
+            "name": "transition_time",
+            "type": "number",
+            "title": {
+              "en": "Transition time"
+            },
+            "example": 0
+          }
+        ]
+      },
+      {
+        "id": "ZGRC_KEY_002_move_color_temperature",
+        "title": {
+          "en": "Move color temperature"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57005"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "move_mode",
+            "type": "number",
+            "title": {
+              "en": "Move mode"
+            },
+            "example": 0
+          },
+          {
+            "name": "rate",
+            "type": "number",
+            "title": {
+              "en": "Rate"
+            },
+            "example": 0.2
+          }
+        ]
+      },
+      {
+        "id": "ZGRC_KEY_002_stop_move_step",
+        "title": {
+          "en": "Stop move step"
+        },
+        "hint": {
+          "en": "The stop move step command is provided to allow Move and Step commands to be stopped."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57005"
+          }
+        ]
+      },
+      {
+        "id": "ZGRC_KEY_005_on",
+        "title": {
+          "en": "On"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57006"
+          }
+        ]
+      },
+      {
+        "id": "ZGRC_KEY_005_off",
+        "title": {
+          "en": "Off"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57006"
+          }
+        ]
+      },
+      {
+        "id": "ZGRC_KEY_005_level_step_with_onoff",
+        "title": {
+          "en": "Step level (with On/Off)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57006"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "mode",
+            "type": "number",
+            "title": {
+              "en": "Mode"
+            },
+            "example": 0
+          },
+          {
+            "name": "step_size",
+            "type": "number",
+            "title": {
+              "en": "Step size"
+            },
+            "example": 0.2
+          },
+          {
+            "name": "transition_time",
+            "type": "number",
+            "title": {
+              "en": "Transition time"
+            },
+            "example": 0
+          }
+        ]
+      },
+      {
+        "id": "ZGRC_KEY_005_level_move_with_onoff",
+        "title": {
+          "en": "Move level (with On/Off)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57006"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "move_mode",
+            "type": "number",
+            "title": {
+              "en": "Move mode"
+            },
+            "example": 0
+          },
+          {
+            "name": "rate",
+            "type": "number",
+            "title": {
+              "en": "Rate"
+            },
+            "example": 0.2
+          }
+        ]
+      },
+      {
+        "id": "ZGRC_KEY_005_level_stop_with_onoff",
+        "title": {
+          "en": "Stop level (with On/Off)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57006"
+          }
+        ]
+      },
+      {
+        "id": "ZGRC_KEY_005_move_to_color_temperature",
+        "title": {
+          "en": "Move to color temperature"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57006"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "color_temperature",
+            "type": "number",
+            "title": {
+              "en": "Color temperature"
+            },
+            "example": 0
+          },
+          {
+            "name": "transition_time",
+            "type": "number",
+            "title": {
+              "en": "Transition time"
+            },
+            "example": 0
+          }
+        ]
+      },
+      {
+        "id": "ZGRC_KEY_005_move_color_temperature",
+        "title": {
+          "en": "Move color temperature"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57006"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "move_mode",
+            "type": "number",
+            "title": {
+              "en": "Move mode"
+            },
+            "example": 0
+          },
+          {
+            "name": "rate",
+            "type": "number",
+            "title": {
+              "en": "Rate"
+            },
+            "example": 0.2
+          }
+        ]
+      },
+      {
+        "id": "ZGRC_KEY_005_stop_move_step",
+        "title": {
+          "en": "Stop move step"
+        },
+        "hint": {
+          "en": "The stop move step command is provided to allow Move and Step commands to be stopped."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57006"
+          }
+        ]
+      },
+      {
+        "id": "ZGRC_KEY_005_move_to_color",
+        "title": {
+          "en": "Move to color (XY)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57006"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "color_x",
+            "type": "number",
+            "title": {
+              "en": "Color X"
+            },
+            "example": 0.1
+          },
+          {
+            "name": "color_y",
+            "type": "number",
+            "title": {
+              "en": "Color Y"
+            },
+            "example": 0.1
+          },
+          {
+            "name": "transition_time",
+            "type": "number",
+            "title": {
+              "en": "Transition time"
+            },
+            "example": 0
+          }
+        ]
+      },
+      {
+        "id": "ZGRC_KEY_005_move_hue",
+        "title": {
+          "en": "Move hue"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57006"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "move_mode",
+            "type": "number",
+            "title": {
+              "en": "Move mode"
+            },
+            "example": 0
+          },
+          {
+            "name": "rate",
+            "type": "number",
+            "title": {
+              "en": "Rate"
+            },
+            "example": 0.2
+          }
+        ]
+      },
+      {
+        "id": "ZGRC_KEY_014_on",
+        "title": {
+          "en": "On"
+        },
+        "titleFormatted": {
+          "en": "Group [[group]] on"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57007"
+          },
+          {
+            "name": "group",
+            "type": "dropdown",
+            "title": {
+              "en": "Group"
+            },
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "Group 1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "Group 2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "Group 3"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ZGRC_KEY_014_off",
+        "title": {
+          "en": "Off"
+        },
+        "titleFormatted": {
+          "en": "Group [[group]] off"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57007"
+          },
+          {
+            "name": "group",
+            "type": "dropdown",
+            "title": {
+              "en": "Group"
+            },
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "Group 1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "Group 2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "Group 3"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ZGRC_KEY_014_recall_scene",
+        "title": {
+          "en": "Recall scene"
+        },
+        "titleFormatted": {
+          "en": "Group [[group]] recall scene"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57007"
+          },
+          {
+            "name": "group",
+            "type": "dropdown",
+            "title": {
+              "en": "Group"
+            },
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "Group 1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "Group 2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "Group 3"
+                }
+              }
+            ]
+          }
+        ],
+        "tokens": [
+          {
+            "name": "group_id",
+            "type": "number",
+            "title": {
+              "en": "Group ID"
+            },
+            "example": 0
+          },
+          {
+            "name": "scene_id",
+            "type": "number",
+            "title": {
+              "en": "Scene ID"
+            },
+            "example": 1
+          }
+        ]
+      },
+      {
+        "id": "ZGRC_KEY_014_store_scene",
+        "title": {
+          "en": "Store scene"
+        },
+        "titleFormatted": {
+          "en": "Group [[group]] store scene"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57007"
+          },
+          {
+            "name": "group",
+            "type": "dropdown",
+            "title": {
+              "en": "Group"
+            },
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "Group 1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "Group 2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "Group 3"
+                }
+              }
+            ]
+          }
+        ],
+        "tokens": [
+          {
+            "name": "group_id",
+            "type": "number",
+            "title": {
+              "en": "Group ID"
+            },
+            "example": 0
+          },
+          {
+            "name": "scene_id",
+            "type": "number",
+            "title": {
+              "en": "Scene ID"
+            },
+            "example": 1
+          }
+        ]
+      },
+      {
+        "id": "ZGRC_KEY_014_level_move_with_onoff",
+        "title": {
+          "en": "Move level (with On/Off)"
+        },
+        "titleFormatted": {
+          "en": "Group [[group]] move level"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57007"
+          },
+          {
+            "name": "group",
+            "type": "dropdown",
+            "title": {
+              "en": "Group"
+            },
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "Group 1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "Group 2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "Group 3"
+                }
+              }
+            ]
+          }
+        ],
+        "tokens": [
+          {
+            "name": "move_mode",
+            "type": "number",
+            "title": {
+              "en": "Move mode"
+            },
+            "example": 0
+          },
+          {
+            "name": "rate",
+            "type": "number",
+            "title": {
+              "en": "Rate"
+            },
+            "example": 0.2
+          }
+        ]
+      },
+      {
+        "id": "ZGRC_KEY_014_level_stop_with_onoff",
+        "title": {
+          "en": "Stop level (with On/Off)"
+        },
+        "titleFormatted": {
+          "en": "Group [[group]] stop level"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57007"
+          },
+          {
+            "name": "group",
+            "type": "dropdown",
+            "title": {
+              "en": "Group"
+            },
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "Group 1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "Group 2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "Group 3"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ZG2819S_RGBW_on",
+        "title": {
+          "en": "On"
+        },
+        "titleFormatted": {
+          "en": "Group [[group]] on"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57009"
+          },
+          {
+            "name": "group",
+            "type": "dropdown",
+            "title": {
+              "en": "Group"
+            },
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "Group 1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "Group 2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "Group 3"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "Group 4"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ZG2819S_RGBW_off",
+        "title": {
+          "en": "Off"
+        },
+        "titleFormatted": {
+          "en": "Group [[group]] off"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57009"
+          },
+          {
+            "name": "group",
+            "type": "dropdown",
+            "title": {
+              "en": "Group"
+            },
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "Group 1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "Group 2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "Group 3"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "Group 4"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ZG2819S_RGBW_move_to_color",
+        "title": {
+          "en": "Move to color (XY)"
+        },
+        "titleFormatted": {
+          "en": "Group [[group]] move to color"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57009"
+          },
+          {
+            "name": "group",
+            "type": "dropdown",
+            "title": {
+              "en": "Group"
+            },
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "Group 1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "Group 2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "Group 3"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "Group 4"
+                }
+              }
+            ]
+          }
+        ],
+        "tokens": [
+          {
+            "name": "color_x",
+            "type": "number",
+            "title": {
+              "en": "Color X"
+            },
+            "example": 0.1
+          },
+          {
+            "name": "color_y",
+            "type": "number",
+            "title": {
+              "en": "Color Y"
+            },
+            "example": 0.1
+          },
+          {
+            "name": "transition_time",
+            "type": "number",
+            "title": {
+              "en": "Transition time"
+            },
+            "example": 0
+          }
+        ]
+      },
+      {
+        "id": "ZG2819S_RGBW_recall_scene",
+        "title": {
+          "en": "Recall scene"
+        },
+        "titleFormatted": {
+          "en": "Group [[group]] recall scene"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57009"
+          },
+          {
+            "name": "group",
+            "type": "dropdown",
+            "title": {
+              "en": "Group"
+            },
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "Group 1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "Group 2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "Group 3"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "Group 4"
+                }
+              }
+            ]
+          }
+        ],
+        "tokens": [
+          {
+            "name": "group_id",
+            "type": "number",
+            "title": {
+              "en": "Group ID"
+            },
+            "example": 0
+          },
+          {
+            "name": "scene_id",
+            "type": "number",
+            "title": {
+              "en": "Scene ID"
+            },
+            "example": 1
+          }
+        ]
+      },
+      {
+        "id": "ZG2819S_RGBW_store_scene",
+        "title": {
+          "en": "Store scene"
+        },
+        "titleFormatted": {
+          "en": "Group [[group]] store scene"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57009"
+          },
+          {
+            "name": "group",
+            "type": "dropdown",
+            "title": {
+              "en": "Group"
+            },
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "Group 1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "Group 2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "Group 3"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "Group 4"
+                }
+              }
+            ]
+          }
+        ],
+        "tokens": [
+          {
+            "name": "group_id",
+            "type": "number",
+            "title": {
+              "en": "Group ID"
+            },
+            "example": 0
+          },
+          {
+            "name": "scene_id",
+            "type": "number",
+            "title": {
+              "en": "Scene ID"
+            },
+            "example": 1
+          }
+        ]
+      },
+      {
+        "id": "ZG2819S_RGBW_level_step_with_onoff",
+        "title": {
+          "en": "Step level (with On/Off)"
+        },
+        "titleFormatted": {
+          "en": "Group [[group]] step level"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57009"
+          },
+          {
+            "name": "group",
+            "type": "dropdown",
+            "title": {
+              "en": "Group"
+            },
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "Group 1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "Group 2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "Group 3"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "Group 4"
+                }
+              }
+            ]
+          }
+        ],
+        "tokens": [
+          {
+            "name": "mode",
+            "type": "number",
+            "title": {
+              "en": "Mode"
+            },
+            "example": 0
+          },
+          {
+            "name": "step_size",
+            "type": "number",
+            "title": {
+              "en": "Step size"
+            },
+            "example": 0.2
+          },
+          {
+            "name": "transition_time",
+            "type": "number",
+            "title": {
+              "en": "Transition time"
+            },
+            "example": 0
+          }
+        ]
+      },
+      {
+        "id": "ZG2819S_RGBW_level_move_with_onoff",
+        "title": {
+          "en": "Move level (with On/Off)"
+        },
+        "titleFormatted": {
+          "en": "Group [[group]] move level"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57009"
+          },
+          {
+            "name": "group",
+            "type": "dropdown",
+            "title": {
+              "en": "Group"
+            },
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "Group 1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "Group 2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "Group 3"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "Group 4"
+                }
+              }
+            ]
+          }
+        ],
+        "tokens": [
+          {
+            "name": "move_mode",
+            "type": "number",
+            "title": {
+              "en": "Move mode"
+            },
+            "example": 0
+          },
+          {
+            "name": "rate",
+            "type": "number",
+            "title": {
+              "en": "Rate"
+            },
+            "example": 0.2
+          }
+        ]
+      },
+      {
+        "id": "ZG2819S_RGBW_level_stop_with_onoff",
+        "title": {
+          "en": "Stop level (with On/Off)"
+        },
+        "titleFormatted": {
+          "en": "Group [[group]] stop level"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57009"
+          },
+          {
+            "name": "group",
+            "type": "dropdown",
+            "title": {
+              "en": "Group"
+            },
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "Group 1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "Group 2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "Group 3"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "Group 4"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ZG2819S_RGBW_move_to_color_temperature",
+        "title": {
+          "en": "Move to color temperature"
+        },
+        "titleFormatted": {
+          "en": "Group [[group]] move to color temperature"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57009"
+          },
+          {
+            "name": "group",
+            "type": "dropdown",
+            "title": {
+              "en": "Group"
+            },
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "Group 1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "Group 2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "Group 3"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "Group 4"
+                }
+              }
+            ]
+          }
+        ],
+        "tokens": [
+          {
+            "name": "color_temperature",
+            "type": "number",
+            "title": {
+              "en": "Color temperature"
+            },
+            "example": 0
+          },
+          {
+            "name": "transition_time",
+            "type": "number",
+            "title": {
+              "en": "Transition time"
+            },
+            "example": 0
+          }
+        ]
+      },
+      {
+        "id": "ZG2819S_RGBW_move_color_temperature",
+        "title": {
+          "en": "Move color temperature"
+        },
+        "titleFormatted": {
+          "en": "Group [[group]] move color temperature"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57009"
+          },
+          {
+            "name": "group",
+            "type": "dropdown",
+            "title": {
+              "en": "Group"
+            },
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "Group 1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "Group 2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "Group 3"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "Group 4"
+                }
+              }
+            ]
+          }
+        ],
+        "tokens": [
+          {
+            "name": "move_mode",
+            "type": "number",
+            "title": {
+              "en": "Move mode"
+            },
+            "example": 0
+          },
+          {
+            "name": "rate",
+            "type": "number",
+            "title": {
+              "en": "Rate"
+            },
+            "example": 0.2
+          }
+        ]
+      },
+      {
+        "id": "ZG2819S_RGBW_stop_move_step",
+        "title": {
+          "en": "Stop move step"
+        },
+        "titleFormatted": {
+          "en": "Group [[group]] stop move step"
+        },
+        "hint": {
+          "en": "The stop move step command is provided to allow Move and Step commands to be stopped."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57009"
+          },
+          {
+            "name": "group",
+            "type": "dropdown",
+            "title": {
+              "en": "Group"
+            },
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "Group 1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "Group 2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "Group 3"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "Group 4"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ZG2819S_RGBW_move_hue",
+        "title": {
+          "en": "Move hue"
+        },
+        "titleFormatted": {
+          "en": "Group [[group]] move hue"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57009"
+          },
+          {
+            "name": "group",
+            "type": "dropdown",
+            "title": {
+              "en": "Group"
+            },
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "Group 1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "Group 2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "Group 3"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "Group 4"
+                }
+              }
+            ]
+          }
+        ],
+        "tokens": [
+          {
+            "name": "move_mode",
+            "type": "number",
+            "title": {
+              "en": "Move mode"
+            },
+            "example": 0
+          },
+          {
+            "name": "rate",
+            "type": "number",
+            "title": {
+              "en": "Rate"
+            },
+            "example": 0.2
+          }
+        ]
+      },
+      {
+        "id": "ZG2835_on",
+        "title": {
+          "en": "On"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57018"
+          }
+        ]
+      },
+      {
+        "id": "ZG2835_off",
+        "title": {
+          "en": "Off"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57018"
+          }
+        ]
+      },
+      {
+        "id": "ZG2835_move_to_level_with_onoff",
+        "title": {
+          "en": "Move to level (with On/Off)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57018"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "level",
+            "type": "number",
+            "title": {
+              "en": "Level"
+            },
+            "example": 0
+          },
+          {
+            "name": "transition_time",
+            "type": "number",
+            "title": {
+              "en": "Transition time"
+            },
+            "example": 0
+          }
+        ]
+      },
+      {
+        "id": "ZG2835_move_to_color_temperature",
+        "title": {
+          "en": "Move to color temperature"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57018"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "color_temperature",
+            "type": "number",
+            "title": {
+              "en": "Color temperature"
+            },
+            "example": 0
+          },
+          {
+            "name": "transition_time",
+            "type": "number",
+            "title": {
+              "en": "Transition time"
+            },
+            "example": 0
+          }
+        ]
+      },
+      {
+        "id": "ZG2835_move_to_hue",
+        "title": {
+          "en": "Move to hue"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=S57018"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "hue",
+            "type": "number",
+            "title": {
+              "en": "Hue"
+            },
+            "example": 0
+          }
+        ]
+      }
+    ]
+  },
+  "drivers": [
+    {
+      "id": "S24013",
+      "name": {
+        "en": "S24013"
+      },
+      "class": "light",
+      "capabilities": [
+        "onoff",
+        "dim"
+      ],
+      "capabilitiesOptions": {
+        "dim": {
+          "opts": {
+            "duration": true
+          }
+        },
+        "onoff": {
+          "setOnDim": false
+        }
+      },
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "connectivity": [
+        "zigbee"
+      ],
+      "zigbee": {
+        "manufacturerName": [
+          "The Light Group AS",
+          "THE LIGHT GROUP AS",
+          "the light group as"
+        ],
+        "productId": [
+          "ZG9101SAC-HP",
+          "S24013"
+        ],
+        "endpoints": {
+          "1": {
+            "clusters": [
+              0,
+              3,
+              4,
+              5,
+              6,
+              8,
+              2821,
+              4096
+            ],
+            "bindings": [
+              6,
+              8
+            ]
+          }
+        },
+        "learnmode": {
+          "image": "/drivers/S24013/assets/learnmode.svg",
+          "instruction": {
+            "en": "Quickly press the Reset button on the device 5 times or repeatedly power OFF/ON 5 times to make the device into pair mode. The device slowly flashing means the device is in pair mode. The pair mode generally lasts for 15 seconds after each power on. Re-power the device to enter pair mode again."
+          }
+        }
+      },
+      "images": {
+        "large": "/drivers/S24013/assets/images/large.png",
+        "small": "/drivers/S24013/assets/images/small.png"
+      },
+      "settings": []
+    },
+    {
+      "id": "S24015",
+      "name": {
+        "en": "S24015"
+      },
+      "class": "light",
+      "capabilities": [
+        "onoff"
+      ],
+      "capabilitiesOptions": {},
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "connectivity": [
+        "zigbee"
+      ],
+      "zigbee": {
+        "manufacturerName": [
+          "The Light Group AS",
+          "THE LIGHT GROUP AS",
+          "the light group as"
+        ],
+        "productId": [
+          "ON/OFF",
+          "S24015"
+        ],
+        "endpoints": {
+          "1": {
+            "clusters": [
+              0,
+              3,
+              4,
+              5,
+              6,
+              2821,
+              4096
+            ],
+            "bindings": [
+              6
+            ]
+          }
+        },
+        "learnmode": {
+          "image": "/drivers/S24015/assets/learnmode.svg",
+          "instruction": {
+            "en": "Quickly press the Reset button on the device 5 times or repeatedly power OFF/ON 5 times to make the device into pair mode. The device slowly flashing means the device is in pair mode. The pair mode generally lasts for 15 seconds after each power on. Re-power the device to enter pair mode again."
+          }
+        }
+      },
+      "images": {
+        "large": "/drivers/S24015/assets/images/large.png",
+        "small": "/drivers/S24015/assets/images/small.png"
+      },
+      "settings": []
+    },
+    {
+      "id": "S24018_CCT",
+      "name": {
+        "en": "S24018/21 CCT"
+      },
+      "class": "light",
+      "capabilities": [
+        "onoff",
+        "dim",
+        "light_temperature"
+      ],
+      "capabilitiesOptions": {
+        "dim": {
+          "opts": {
+            "duration": true
+          }
+        },
+        "light_temperature": {
+          "opts": {
+            "duration": true
+          }
+        },
+        "onoff": {
+          "setOnDim": false
+        }
+      },
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "connectivity": [
+        "zigbee"
+      ],
+      "zigbee": {
+        "manufacturerName": [
+          "The Light Group AS",
+          "THE LIGHT GROUP AS",
+          "the light group as"
+        ],
+        "productId": [
+          "CCT Lighting",
+          "CCT Light"
+        ],
+        "endpoints": {
+          "1": {
+            "clusters": [
+              0,
+              3,
+              4,
+              5,
+              6,
+              8,
+              768,
+              2821,
+              4096
+            ],
+            "bindings": [
+              6,
+              8
+            ]
+          }
+        },
+        "learnmode": {
+          "image": "/drivers/S24018_CCT/assets/learnmode.svg",
+          "instruction": {
+            "en": "Quickly press the Reset button on the device 5 times or repeatedly power OFF/ON 5 times to make the device into pair mode. The device slowly flashing means the device is in pair mode. The pair mode generally lasts for 15 seconds after each power on. Re-power the device to enter pair mode again."
+          }
+        }
+      },
+      "images": {
+        "large": "/drivers/S24018_CCT/assets/images/large.png",
+        "small": "/drivers/S24018_CCT/assets/images/small.png"
+      },
+      "settings": []
+    },
+    {
+      "id": "S24018_DIM",
+      "name": {
+        "en": "S24018/21 DIM"
+      },
+      "class": "light",
+      "capabilities": [
+        "onoff",
+        "dim"
+      ],
+      "capabilitiesOptions": {
+        "dim": {
+          "opts": {
+            "duration": true
+          }
+        },
+        "onoff": {
+          "setOnDim": false
+        }
+      },
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "connectivity": [
+        "zigbee"
+      ],
+      "zigbee": {
+        "manufacturerName": [
+          "The Light Group AS",
+          "THE LIGHT GROUP AS",
+          "the light group as"
+        ],
+        "productId": [
+          "DIM Lighting",
+          "S24018"
+        ],
+        "endpoints": {
+          "1": {
+            "clusters": [
+              0,
+              3,
+              4,
+              5,
+              6,
+              8,
+              2821,
+              4096
+            ],
+            "bindings": [
+              6,
+              8
+            ]
+          }
+        },
+        "learnmode": {
+          "image": "/drivers/S24018_DIM/assets/learnmode.svg",
+          "instruction": {
+            "en": "Quickly press the Reset button on the device 5 times or repeatedly power OFF/ON 5 times to make the device into pair mode. The device slowly flashing means the device is in pair mode. The pair mode generally lasts for 15 seconds after each power on. Re-power the device to enter pair mode again."
+          }
+        }
+      },
+      "images": {
+        "large": "/drivers/S24018_DIM/assets/images/large.png",
+        "small": "/drivers/S24018_DIM/assets/images/small.png"
+      },
+      "settings": []
+    },
+    {
+      "id": "S24018_RGBCCT",
+      "name": {
+        "en": "S24018/21 RGBCCT"
+      },
+      "class": "light",
+      "capabilities": [
+        "onoff",
+        "dim",
+        "light_hue",
+        "light_saturation",
+        "light_temperature",
+        "light_mode"
+      ],
+      "capabilitiesOptions": {
+        "dim": {
+          "opts": {
+            "duration": true
+          }
+        },
+        "light_hue": {
+          "opts": {
+            "duration": true
+          }
+        },
+        "light_saturation": {
+          "opts": {
+            "duration": true
+          }
+        },
+        "light_temperature": {
+          "opts": {
+            "duration": true
+          }
+        },
+        "onoff": {
+          "setOnDim": false
+        }
+      },
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "connectivity": [
+        "zigbee"
+      ],
+      "zigbee": {
+        "manufacturerName": [
+          "The Light Group AS",
+          "THE LIGHT GROUP AS",
+          "the light group as"
+        ],
+        "productId": [
+          "RGB-CCT",
+          "RGBW-CCT"
+        ],
+        "endpoints": {
+          "1": {
+            "clusters": [
+              0,
+              3,
+              4,
+              5,
+              6,
+              8,
+              768,
+              2821,
+              4096
+            ],
+            "bindings": [
+              6,
+              8
+            ]
+          }
+        },
+        "learnmode": {
+          "image": "/drivers/S24018_RGBCCT/assets/learnmode.svg",
+          "instruction": {
+            "en": "Quickly press the Reset button on the device 5 times or repeatedly power OFF/ON 5 times to make the device into pair mode. The device slowly flashing means the device is in pair mode. The pair mode generally lasts for 15 seconds after each power on. Re-power the device to enter pair mode again."
+          }
+        }
+      },
+      "images": {
+        "large": "/drivers/S24018_RGBCCT/assets/images/large.png",
+        "small": "/drivers/S24018_RGBCCT/assets/images/small.png"
+      },
+      "settings": []
+    },
+    {
+      "id": "S24018_RGBW",
+      "name": {
+        "en": "S24018/21 RGBW"
+      },
+      "class": "light",
+      "capabilities": [
+        "onoff",
+        "dim",
+        "light_hue",
+        "light_saturation",
+        "light_temperature",
+        "light_mode"
+      ],
+      "capabilitiesOptions": {
+        "dim": {
+          "opts": {
+            "duration": true
+          }
+        },
+        "light_hue": {
+          "opts": {
+            "duration": true
+          }
+        },
+        "light_saturation": {
+          "opts": {
+            "duration": true
+          }
+        },
+        "light_temperature": {
+          "opts": {
+            "duration": true
+          }
+        },
+        "onoff": {
+          "setOnDim": false
+        }
+      },
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "connectivity": [
+        "zigbee"
+      ],
+      "zigbee": {
+        "manufacturerName": [
+          "The Light Group AS",
+          "THE LIGHT GROUP AS",
+          "the light group as"
+        ],
+        "productId": [
+          "RGBW Lighting"
+        ],
+        "endpoints": {
+          "1": {
+            "clusters": [
+              0,
+              3,
+              4,
+              5,
+              6,
+              8,
+              768,
+              2821,
+              4096
+            ],
+            "bindings": [
+              6,
+              8
+            ]
+          }
+        },
+        "learnmode": {
+          "image": "/drivers/S24018_RGBW/assets/learnmode.svg",
+          "instruction": {
+            "en": "Quickly press the Reset button on the device 5 times or repeatedly power OFF/ON 5 times to make the device into pair mode. The device slowly flashing means the device is in pair mode. The pair mode generally lasts for 15 seconds after each power on. Re-power the device to enter pair mode again."
+          }
+        }
+      },
+      "images": {
+        "large": "/drivers/S24018_RGBW/assets/images/large.png",
+        "small": "/drivers/S24018_RGBW/assets/images/small.png"
+      },
+      "settings": []
+    },
+    {
+      "id": "S24019",
+      "name": {
+        "en": "S24019"
+      },
+      "class": "light",
+      "capabilities": [
+        "onoff",
+        "dim",
+        "measure_power",
+        "meter_power"
+      ],
+      "capabilitiesOptions": {
+        "dim": {
+          "opts": {
+            "duration": true
+          }
+        },
+        "onoff": {
+          "setOnDim": false
+        },
+        "measure_power": {
+          "approximated": true
+        }
+      },
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "connectivity": [
+        "zigbee"
+      ],
+      "zigbee": {
+        "manufacturerName": [
+          "The Light Group AS",
+          "THE LIGHT GROUP AS",
+          "the light group as"
+        ],
+        "productId": [
+          "S24019"
+        ],
+        "endpoints": {
+          "1": {
+            "clusters": [
+              0,
+              3,
+              4,
+              5,
+              6,
+              8,
+              1794,
+              2820,
+              2821,
+              4096
+            ],
+            "bindings": [
+              6,
+              8
+            ]
+          }
+        },
+        "learnmode": {
+          "image": "/drivers/S24019/assets/learnmode.svg",
+          "instruction": {
+            "en": "Quickly press the Reset button on the device 5 times or repeatedly power OFF/ON 5 times to make the device into pair mode. The device slowly flashing means the device is in pair mode. The pair mode generally lasts for 15 seconds after each power on. Re-power the device to enter pair mode again."
+          }
+        }
+      },
+      "images": {
+        "large": "/drivers/S24019/assets/images/large.png",
+        "small": "/drivers/S24019/assets/images/small.png"
+      },
+      "settings": []
+    },
+    {
+      "id": "S24020",
+      "name": {
+        "en": "S24020"
+      },
+      "class": "light",
+      "capabilities": [
+        "onoff",
+        "dim"
+      ],
+      "capabilitiesOptions": {
+        "dim": {
+          "opts": {
+            "duration": true
+          }
+        },
+        "onoff": {
+          "setOnDim": false
+        }
+      },
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "connectivity": [
+        "zigbee"
+      ],
+      "zigbee": {
+        "manufacturerName": [
+          "The Light Group AS",
+          "THE LIGHT GROUP AS",
+          "the light group as"
+        ],
+        "productId": [
+          "S24020"
+        ],
+        "endpoints": {
+          "1": {
+            "clusters": [
+              0,
+              3,
+              4,
+              5,
+              6,
+              8,
+              2821,
+              4096
+            ],
+            "bindings": [
+              6,
+              8
+            ]
+          }
+        },
+        "learnmode": {
+          "image": "/drivers/S24020/assets/learnmode.svg",
+          "instruction": {
+            "en": "Quickly press the Reset button on the device 5 times or repeatedly power OFF/ON 5 times to make the device into pair mode. The device slowly flashing means the device is in pair mode. The pair mode generally lasts for 15 seconds after each power on. Re-power the device to enter pair mode again."
+          }
+        }
+      },
+      "images": {
+        "large": "/drivers/S24020/assets/images/large.png",
+        "small": "/drivers/S24020/assets/images/small.png"
+      },
+      "settings": []
+    },
+    {
+      "id": "S24021",
+      "name": {
+        "en": "S24021"
+      },
+      "class": "light",
+      "capabilities": [
+        "onoff",
+        "dim"
+      ],
+      "capabilitiesOptions": {
+        "dim": {
+          "opts": {
+            "duration": true
+          }
+        },
+        "onoff": {
+          "setOnDim": false
+        }
+      },
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "connectivity": [
+        "zigbee"
+      ],
+      "zigbee": {
+        "manufacturerName": [
+          "The Light Group AS",
+          "THE LIGHT GROUP AS",
+          "the light group as"
+        ],
+        "productId": [
+          "S24021"
+        ],
+        "endpoints": {
+          "1": {
+            "clusters": [
+              0,
+              3,
+              4,
+              5,
+              6,
+              8,
+              2821,
+              4096
+            ],
+            "bindings": [
+              6,
+              8
+            ]
+          }
+        },
+        "learnmode": {
+          "image": "/drivers/S24021/assets/learnmode.svg",
+          "instruction": {
+            "en": "Quickly press the Reset button on the device 5 times or repeatedly power OFF/ON 5 times to make the device into pair mode. The device slowly flashing means the device is in pair mode. The pair mode generally lasts for 15 seconds after each power on. Re-power the device to enter pair mode again."
+          }
+        }
+      },
+      "images": {
+        "large": "/drivers/S24021/assets/images/large.png",
+        "small": "/drivers/S24021/assets/images/small.png"
+      },
+      "settings": []
+    },
+    {
+      "id": "S32050",
+      "name": {
+        "en": "S32050"
+      },
+      "class": "light",
+      "capabilities": [
+        "onoff",
+        "dim"
+      ],
+      "capabilitiesOptions": {
+        "dim": {
+          "opts": {
+            "duration": true
+          }
+        },
+        "onoff": {
+          "setOnDim": false
+        }
+      },
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "connectivity": [
+        "zigbee"
+      ],
+      "zigbee": {
+        "manufacturerName": [
+          "The Light Group AS",
+          "THE LIGHT GROUP AS",
+          "the light group as"
+        ],
+        "productId": [
+          "S32050"
+        ],
+        "endpoints": {
+          "1": {
+            "clusters": [
+              0,
+              3,
+              4,
+              5,
+              6,
+              8,
+              2821,
+              4096
+            ],
+            "bindings": [
+              6,
+              8
+            ]
+          }
+        },
+        "learnmode": {
+          "image": "/drivers/S32050/assets/learnmode.svg",
+          "instruction": {
+            "en": "Quickly press the Prog. button on the device 5 times or repeatedly power OFF/ON 5 times to make the device into pair mode."
+          }
+        }
+      },
+      "images": {
+        "large": "/drivers/S32050/assets/images/large.png",
+        "small": "/drivers/S32050/assets/images/small.png"
+      },
+      "settings": []
+    },
+    {
+      "id": "S32051",
+      "name": {
+        "en": "S32051"
+      },
+      "class": "light",
+      "capabilities": [
+        "onoff",
+        "dim"
+      ],
+      "capabilitiesOptions": {
+        "dim": {
+          "opts": {
+            "duration": true
+          }
+        },
+        "onoff": {
+          "setOnDim": false
+        }
+      },
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "connectivity": [
+        "zigbee"
+      ],
+      "zigbee": {
+        "manufacturerName": [
+          "The Light Group AS",
+          "THE LIGHT GROUP AS",
+          "the light group as"
+        ],
+        "productId": [
+          "S32051"
+        ],
+        "endpoints": {
+          "1": {
+            "clusters": [
+              0,
+              3,
+              4,
+              5,
+              6,
+              8,
+              2821,
+              4096
+            ],
+            "bindings": [
+              6,
+              8
+            ]
+          }
+        },
+        "learnmode": {
+          "image": "/drivers/S32051/assets/learnmode.svg",
+          "instruction": {
+            "en": "Quickly press the Prog. button on the device 5 times or repeatedly power OFF/ON 5 times to make the device into pair mode."
+          }
+        }
+      },
+      "images": {
+        "large": "/drivers/S32051/assets/images/large.png",
+        "small": "/drivers/S32051/assets/images/small.png"
+      },
+      "settings": []
+    },
+    {
+      "id": "S32052",
+      "name": {
+        "en": "S32052"
+      },
+      "class": "light",
+      "capabilities": [
+        "onoff",
+        "dim",
+        "light_temperature"
+      ],
+      "capabilitiesOptions": {
+        "dim": {
+          "opts": {
+            "duration": true
+          }
+        },
+        "light_temperature": {
+          "opts": {
+            "duration": true
+          }
+        },
+        "onoff": {
+          "setOnDim": false
+        }
+      },
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "connectivity": [
+        "zigbee"
+      ],
+      "zigbee": {
+        "manufacturerName": [
+          "The Light Group AS",
+          "THE LIGHT GROUP AS",
+          "the light group as"
+        ],
+        "productId": [
+          "S32052"
+        ],
+        "endpoints": {
+          "1": {
+            "clusters": [
+              0,
+              3,
+              4,
+              5,
+              6,
+              8,
+              768,
+              2821,
+              4096
+            ],
+            "bindings": [
+              6,
+              8
+            ]
+          }
+        },
+        "learnmode": {
+          "image": "/drivers/S32052/assets/learnmode.svg",
+          "instruction": {
+            "en": "Quickly press the Reset button on the device 5 times or repeatedly power OFF/ON 5 times to make the device into pair mode. The device slowly flashing means the device is in pair mode. The pair mode generally lasts for 15 seconds after each power on. Re-power the device to enter pair mode again."
+          }
+        }
+      },
+      "images": {
+        "large": "/drivers/S32052/assets/images/large.png",
+        "small": "/drivers/S32052/assets/images/small.png"
+      },
+      "settings": []
+    },
+    {
+      "id": "S32053",
+      "name": {
+        "en": "S32053"
+      },
+      "class": "light",
+      "capabilities": [
+        "onoff",
+        "dim"
+      ],
+      "capabilitiesOptions": {
+        "dim": {
+          "opts": {
+            "duration": true
+          }
+        },
+        "onoff": {
+          "setOnDim": false
+        }
+      },
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "connectivity": [
+        "zigbee"
+      ],
+      "zigbee": {
+        "manufacturerName": [
+          "The Light Group AS",
+          "THE LIGHT GROUP AS",
+          "the light group as"
+        ],
+        "productId": [
+          "S32053"
+        ],
+        "endpoints": {
+          "1": {
+            "clusters": [
+              0,
+              3,
+              4,
+              5,
+              6,
+              8,
+              2821,
+              4096
+            ],
+            "bindings": [
+              6,
+              8
+            ]
+          }
+        },
+        "learnmode": {
+          "image": "/drivers/S32053/assets/learnmode.svg",
+          "instruction": {
+            "en": "Quickly press the Reset button on the device 5 times or repeatedly power OFF/ON 5 times to make the device into pair mode. The device slowly flashing means the device is in pair mode. The pair mode generally lasts for 15 seconds after each power on. Re-power the device to enter pair mode again."
+          }
+        }
+      },
+      "images": {
+        "large": "/drivers/S32053/assets/images/large.png",
+        "small": "/drivers/S32053/assets/images/small.png"
+      },
+      "settings": []
+    },
+    {
+      "id": "S32054",
+      "name": {
+        "en": "S32054"
+      },
+      "class": "light",
+      "capabilities": [
+        "onoff",
+        "dim"
+      ],
+      "capabilitiesOptions": {
+        "dim": {
+          "opts": {
+            "duration": true
+          }
+        },
+        "onoff": {
+          "setOnDim": false
+        }
+      },
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "connectivity": [
+        "zigbee"
+      ],
+      "zigbee": {
+        "manufacturerName": [
+          "The Light Group AS",
+          "THE LIGHT GROUP AS",
+          "the light group as"
+        ],
+        "productId": [
+          "S32054"
+        ],
+        "endpoints": {
+          "1": {
+            "clusters": [
+              0,
+              3,
+              4,
+              5,
+              6,
+              8,
+              2821
+            ],
+            "bindings": [
+              6,
+              8
+            ]
+          }
+        },
+        "learnmode": {
+          "image": "/drivers/S32054/assets/learnmode.svg",
+          "instruction": {
+            "en": "Quickly press the Reset button on the device 5 times or repeatedly power OFF/ON 5 times to make the device into pair mode. The device slowly flashing means the device is in pair mode. The pair mode generally lasts for 15 seconds after each power on. Re-power the device to enter pair mode again."
+          }
+        }
+      },
+      "images": {
+        "large": "/drivers/S32054/assets/images/large.png",
+        "small": "/drivers/S32054/assets/images/small.png"
+      },
+      "settings": []
+    },
+    {
+      "id": "S32055",
+      "name": {
+        "en": "S32055"
+      },
+      "class": "light",
+      "capabilities": [
+        "onoff",
+        "dim",
+        "light_temperature"
+      ],
+      "capabilitiesOptions": {
+        "dim": {
+          "opts": {
+            "duration": true
+          }
+        },
+        "light_temperature": {
+          "opts": {
+            "duration": true
+          }
+        },
+        "onoff": {
+          "setOnDim": false
+        }
+      },
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "connectivity": [
+        "zigbee"
+      ],
+      "zigbee": {
+        "manufacturerName": [
+          "The Light Group AS",
+          "THE LIGHT GROUP AS",
+          "the light group as"
+        ],
+        "productId": [
+          "S32055"
+        ],
+        "endpoints": {
+          "1": {
+            "clusters": [
+              0,
+              3,
+              4,
+              5,
+              6,
+              8,
+              768,
+              2821,
+              4096
+            ],
+            "bindings": [
+              6,
+              8
+            ]
+          }
+        },
+        "learnmode": {
+          "image": "/drivers/S32055/assets/learnmode.svg",
+          "instruction": {
+            "en": "Quickly press the Reset button on the device 5 times or repeatedly power OFF/ON 5 times to make the device into pair mode. The device slowly flashing means the device is in pair mode. The pair mode generally lasts for 15 seconds after each power on. Re-power the device to enter pair mode again."
+          }
+        }
+      },
+      "images": {
+        "large": "/drivers/S32055/assets/images/large.png",
+        "small": "/drivers/S32055/assets/images/small.png"
+      },
+      "settings": []
+    },
+    {
+      "id": "S32056",
+      "name": {
+        "en": "S32056"
+      },
+      "class": "light",
+      "capabilities": [
+        "onoff",
+        "dim",
+        "light_hue",
+        "light_saturation",
+        "light_temperature",
+        "light_mode"
+      ],
+      "capabilitiesOptions": {
+        "dim": {
+          "opts": {
+            "duration": true
+          }
+        },
+        "light_hue": {
+          "opts": {
+            "duration": true
+          }
+        },
+        "light_saturation": {
+          "opts": {
+            "duration": true
+          }
+        },
+        "light_temperature": {
+          "opts": {
+            "duration": true
+          }
+        },
+        "onoff": {
+          "setOnDim": false
+        }
+      },
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "connectivity": [
+        "zigbee"
+      ],
+      "zigbee": {
+        "manufacturerName": [
+          "The Light Group AS",
+          "THE LIGHT GROUP AS",
+          "the light group as"
+        ],
+        "productId": [
+          "S32056"
+        ],
+        "endpoints": {
+          "1": {
+            "clusters": [
+              0,
+              3,
+              4,
+              5,
+              6,
+              8,
+              768,
+              2821,
+              4096
+            ],
+            "bindings": [
+              6,
+              8
+            ]
+          }
+        },
+        "learnmode": {
+          "image": "/drivers/S32056/assets/learnmode.svg",
+          "instruction": {
+            "en": "Quickly press the Reset button on the device 5 times or repeatedly power OFF/ON 5 times to make the device into pair mode. The device slowly flashing means the device is in pair mode. The pair mode generally lasts for 15 seconds after each power on. Re-power the device to enter pair mode again."
+          }
+        }
+      },
+      "images": {
+        "large": "/drivers/S32056/assets/images/large.png",
+        "small": "/drivers/S32056/assets/images/small.png"
+      },
+      "settings": []
+    },
+    {
+      "id": "S57001",
+      "name": {
+        "en": "S57001"
+      },
+      "class": "remote",
+      "capabilities": [
+        "measure_battery"
+      ],
+      "energy": {
+        "batteries": [
+          "CR2450"
+        ]
+      },
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "connectivity": [
+        "zigbee"
+      ],
+      "zigbee": {
+        "manufacturerName": [
+          "The Light Group AS",
+          "THE LIGHT GROUP AS",
+          "the light group as"
+        ],
+        "productId": [
+          "ZG2833K2_EU07",
+          "S57001"
+        ],
+        "endpoints": {
+          "1": {
+            "clusters": [
+              0,
+              1,
+              3,
+              2821
+            ],
+            "bindings": []
+          }
+        },
+        "learnmode": {
+          "image": "/drivers/S57001/assets/learnmode.svg",
+          "instruction": {
+            "en": "Press and hold down both buttons until the LED indicator turns on.\nRelease both button and immediately press the Pair button on the top right corner and the remote will be set to pair mode.\nThe LED indicator blinking several times will indicate successful inclusion.\n\nReset...\nWhen you can't successfully add a device, reset the device first.\nPress and hold down both buttons until the LED indicator turns on.\nRelease both button and immediately press the Pair button 5 times and the remote will be reset."
+          }
+        }
+      },
+      "images": {
+        "large": "/drivers/S57001/assets/images/large.png",
+        "small": "/drivers/S57001/assets/images/small.png"
+      },
+      "settings": []
+    },
+    {
+      "id": "S57003",
+      "name": {
+        "en": "S57003"
+      },
+      "class": "remote",
+      "capabilities": [
+        "measure_battery"
+      ],
+      "energy": {
+        "batteries": [
+          "CR2450"
+        ]
+      },
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "connectivity": [
+        "zigbee"
+      ],
+      "zigbee": {
+        "manufacturerName": [
+          "The Light Group AS",
+          "THE LIGHT GROUP AS",
+          "the light group as"
+        ],
+        "productId": [
+          "ZG2833K8_EU05",
+          "S57003"
+        ],
+        "endpoints": {
+          "1": {
+            "clusters": [
+              0,
+              1,
+              3,
+              2821
+            ],
+            "bindings": []
+          },
+          "2": {
+            "clusters": [
+              0,
+              1,
+              3,
+              2821
+            ],
+            "bindings": []
+          },
+          "3": {
+            "clusters": [
+              0,
+              1,
+              3,
+              2821
+            ],
+            "bindings": []
+          },
+          "4": {
+            "clusters": [
+              0,
+              1,
+              3,
+              2821
+            ],
+            "bindings": []
+          }
+        },
+        "learnmode": {
+          "image": "/drivers/S57003/assets/learnmode.svg",
+          "instruction": {
+            "en": "Press and hold down both Reset and Pair buttons until the LED indicator turns on.\nRelease both button and immediately press the Pair button on the top right corner and the remote will be set to pair mode.\nThe LED indicator blinking several times will indicate successful inclusion.\n\nReset...\nWhen you can't successfully add a device, reset the device first.\nPress and hold down both Reset and Pair buttons until the LED indicator turns on.\nRelease both button and immediately press the Reset button 5 times and the remote will be reset."
+          }
+        }
+      },
+      "images": {
+        "large": "/drivers/S57003/assets/images/large.png",
+        "small": "/drivers/S57003/assets/images/small.png"
+      },
+      "settings": []
+    },
+    {
+      "id": "S57005",
+      "name": {
+        "en": "S57005"
+      },
+      "class": "remote",
+      "capabilities": [
+        "measure_battery"
+      ],
+      "energy": {
+        "batteries": [
+          "CR2450"
+        ]
+      },
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "connectivity": [
+        "zigbee"
+      ],
+      "zigbee": {
+        "manufacturerName": [
+          "The Light Group AS",
+          "THE LIGHT GROUP AS",
+          "the light group as"
+        ],
+        "productId": [
+          "ZGRC_KEY_002",
+          "ZGRC-KEY-002",
+          "S57005"
+        ],
+        "endpoints": {
+          "1": {
+            "clusters": [
+              0,
+              1,
+              3,
+              2821
+            ],
+            "bindings": []
+          }
+        },
+        "learnmode": {
+          "image": "/drivers/S57005/assets/learnmode.svg",
+          "instruction": {
+            "en": "Press and hold down the Reset button until the LED indicator turns on.\nRelease button and immediately press the Pair button and the remote will be set to pair mode.\nThe LED indicator blinking several times will indicate successful inclusion.\n\nReset...\nWhen you can't successfully add a device, reset the device first.\nPress and hold down the Reset button until the LED indicator turns on.\nRelease the button and immediately press the Reset button 5 times and the remote will be reset."
+          }
+        }
+      },
+      "images": {
+        "large": "/drivers/S57005/assets/images/large.png",
+        "small": "/drivers/S57005/assets/images/small.png"
+      },
+      "settings": []
+    },
+    {
+      "id": "S57006",
+      "name": {
+        "en": "S57006"
+      },
+      "class": "remote",
+      "capabilities": [
+        "measure_battery"
+      ],
+      "energy": {
+        "batteries": [
+          "CR2450"
+        ]
+      },
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "connectivity": [
+        "zigbee"
+      ],
+      "zigbee": {
+        "manufacturerName": [
+          "The Light Group AS",
+          "THE LIGHT GROUP AS",
+          "the light group as"
+        ],
+        "productId": [
+          "ZGRC_KEY_005",
+          "ZGRC-KEY-005",
+          "S57006"
+        ],
+        "endpoints": {
+          "1": {
+            "clusters": [
+              0,
+              1,
+              3,
+              2821
+            ],
+            "bindings": []
+          }
+        },
+        "learnmode": {
+          "image": "/drivers/S57006/assets/learnmode.svg",
+          "instruction": {
+            "en": "Press and hold down the Reset button until the LED indicator turns on.\nRelease button and immediately press the Pair button and the remote will be set to pair mode.\nThe LED indicator blinking several times will indicate successful inclusion.\n\nReset...\nWhen you can't successfully add a device, reset the device first.\nPress and hold down the Reset button until the LED indicator turns on.\nRelease the button and immediately press the Reset button 5 times and the remote will be reset."
+          }
+        }
+      },
+      "images": {
+        "large": "/drivers/S57006/assets/images/large.png",
+        "small": "/drivers/S57006/assets/images/small.png"
+      },
+      "settings": []
+    },
+    {
+      "id": "S57007",
+      "name": {
+        "en": "S57007"
+      },
+      "class": "remote",
+      "capabilities": [
+        "measure_battery"
+      ],
+      "energy": {
+        "batteries": [
+          "CR2032"
+        ]
+      },
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "connectivity": [
+        "zigbee"
+      ],
+      "zigbee": {
+        "manufacturerName": [
+          "The Light Group AS",
+          "THE LIGHT GROUP AS",
+          "the light group as"
+        ],
+        "productId": [
+          "ZGRC_KEY_014",
+          "ZGRC-KEY-014",
+          "S57007"
+        ],
+        "endpoints": {
+          "1": {
+            "clusters": [
+              0,
+              1,
+              3,
+              2821
+            ],
+            "bindings": []
+          },
+          "2": {
+            "clusters": [
+              0,
+              1,
+              3,
+              2821
+            ],
+            "bindings": []
+          },
+          "3": {
+            "clusters": [
+              0,
+              1,
+              3,
+              2821
+            ],
+            "bindings": []
+          }
+        },
+        "learnmode": {
+          "image": "/drivers/S57007/assets/learnmode.svg",
+          "instruction": {
+            "en": "Press and hold down reset button until LED indicator turns on. \nImmediately short press pair button to search nearby network, indicator flashes every 1 second, 20 seconds timeout if there is no network. Indicator will then blink 5 times quickly for successful pairing. \n\nRemove the remote from previous zigbee network if it has already been added to it, otherwise pairing will fail. \nPress and hold down reset button until LED indicator turns on. Immediately short press reset button 5 times continuously, indicator flashes 3 times quickly to indicate successful reset."
+          }
+        }
+      },
+      "images": {
+        "large": "/drivers/S57007/assets/images/large.png",
+        "small": "/drivers/S57007/assets/images/small.png"
+      },
+      "settings": []
+    },
+    {
+      "id": "S57009",
+      "name": {
+        "en": "S57009"
+      },
+      "class": "remote",
+      "capabilities": [
+        "measure_battery"
+      ],
+      "energy": {
+        "batteries": [
+          "AAA",
+          "AAA",
+          "AAA"
+        ]
+      },
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "connectivity": [
+        "zigbee"
+      ],
+      "zigbee": {
+        "manufacturerName": [
+          "The Light Group AS",
+          "THE LIGHT GROUP AS",
+          "the light group as"
+        ],
+        "productId": [
+          "ZG2819S-RGBW",
+          "S57009"
+        ],
+        "endpoints": {
+          "1": {
+            "clusters": [
+              0,
+              1,
+              3,
+              2821
+            ],
+            "bindings": []
+          },
+          "2": {
+            "clusters": [
+              0,
+              1,
+              3,
+              2821
+            ],
+            "bindings": []
+          },
+          "3": {
+            "clusters": [
+              0,
+              1,
+              3,
+              2821
+            ],
+            "bindings": []
+          },
+          "4": {
+            "clusters": [
+              0,
+              1,
+              3,
+              2821
+            ],
+            "bindings": []
+          }
+        },
+        "learnmode": {
+          "image": "/drivers/S57009/assets/learnmode.svg",
+          "instruction": {
+            "en": "# Pairing\nStep 1: Remove the remote from previous zigbee network if it has already been added to it, otherwise pairing will fail. Please refer to the part \"Factory Reset Manually\".\nStep 2: Press and hold down \"Prog.\" button until LED indicator turns on.\nStep 3: Immediately short press \"S1\" button to search nearby network, indicator flashes every 1 second, 20 seconds timeout if there is no network. Indicator will then blink 5 times quickly for successful pairing.\n\n# Factory Reset Manually\nStep 1: Press and hold down \"Prog.\" button until LED indicator turns on.\nStep 2: Immediately short press 5 times \"Prog.\" button continuously, indicator flashes 3 times quickly to indicate successful reset."
+          }
+        }
+      },
+      "images": {
+        "large": "/drivers/S57009/assets/images/large.png",
+        "small": "/drivers/S57009/assets/images/small.png"
+      },
+      "settings": []
+    },
+    {
+      "id": "S57018",
+      "name": {
+        "en": "S57018"
+      },
+      "class": "remote",
+      "capabilities": [
+        "measure_battery"
+      ],
+      "energy": {
+        "batteries": [
+          "CR2450"
+        ]
+      },
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "connectivity": [
+        "zigbee"
+      ],
+      "zigbee": {
+        "manufacturerName": [
+          "The Light Group AS",
+          "THE LIGHT GROUP AS",
+          "the light group as"
+        ],
+        "productId": [
+          "ZG2835",
+          "S57018"
+        ],
+        "endpoints": {
+          "1": {
+            "clusters": [
+              0,
+              1,
+              3,
+              2821
+            ],
+            "bindings": []
+          }
+        },
+        "learnmode": {
+          "image": "/drivers/S57018/assets/learnmode.svg",
+          "instruction": {
+            "en": "Short press the knob 5 times continuously.\nWithin 2 seconds press and hold the knob for over 3 seconds, indicator flashes every 1 second. Indicator will then blink 5 times quickly for successful pairing.\n\nRemove the switch from previous ZigBee network if it has already been added to it, otherwise pairing will fail.\nShort press the knob 5 times continuously and quickly.\nWithin 2 seconds press and hold the knob for over 3 seconds, indicator will flash 3 times for successful reset."
+          }
+        }
+      },
+      "images": {
+        "large": "/drivers/S57018/assets/images/large.png",
+        "small": "/drivers/S57018/assets/images/small.png"
+      },
+      "settings": []
+    },
+    {
+      "name": {
+        "en": "ZG Thermostat"
+      },
+      "class": "thermostat",
+      "capabilities": [
+        "measure_power",
+        "meter_power",
+        "measure_temperature",
+        "target_temperature",
+        "onoff",
+        "my_thermostat_mode",
+        "my_thermostat_away_mode",
+        "my_thermostat_control_type",
+        "my_thermostat_room_sensor",
+        "my_thermostat_floor_sensor"
+      ],
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "zigbee"
+      ],
+      "zigbee": {
+        "manufacturerName": [
+          "NAMRON AS",
+          "NAMRON  AS",
+          "NAMRON As",
+          "Namron AS",
+          "Namron As",
+          "namron as",
+          "Sunricher"
+        ],
+        "productId": [
+          "ZG9092"
+        ],
+        "endpoints": {
+          "1": {
+            "clusters": [
+              513,
+              1794,
+              2820
+            ],
+            "bindings": [
+              513,
+              1794,
+              2820
+            ]
+          }
+        },
+        "learnmode": {
+          "image": "/drivers/zg_thermostat/assets/learnmode.svg",
+          "instruction": {
+            "en": "# Pair\n1) At OFF mode (Off icon), press and hold up and down buttons at the same time for over 5 seconds to enter Settings Menu.\n2) Short press move up and down button to select a settings item, then short press button F to enter selected item.\n3) Select \"Add\", then short press button F.\n\n# Factory Reset\nEnter settings item, select \"Reset\", then short press button F."
+          }
+        }
+      },
+      "images": {
+        "small": "/drivers/zg_thermostat/assets/images/small.png",
+        "large": "/drivers/zg_thermostat/assets/images/large.png"
+      },
+      "id": "zg_thermostat"
+    }
+  ],
+  "capabilities": {
+    "my_device_operating_mode": {
+      "id": "my_device_operating_mode",
+      "title": {
+        "en": "Device operating mode"
+      },
+      "type": "enum",
+      "setable": true,
+      "getable": true,
+      "uiComponent": "picker",
+      "values": [
+        {
+          "id": "switch_mode",
+          "title": {
+            "en": "Switch mode"
+          }
+        },
+        {
+          "id": "thermostat_mode",
+          "title": {
+            "en": "Thermostat mode"
+          }
+        }
+      ]
+    },
+    "my_thermostat_away_mode": {
+      "title": {
+        "en": "Leave Home"
+      },
+      "type": "boolean",
+      "setable": false,
+      "getable": true,
+      "uiComponent": null
+    },
+    "my_thermostat_control_type": {
+      "title": {
+        "en": "Control Type"
+      },
+      "type": "string",
+      "setable": false,
+      "getable": true,
+      "uiComponent": null
+    },
+    "my_thermostat_floor_sensor": {
+      "title": {
+        "en": "Floor Sensor"
+      },
+      "type": "number",
+      "setable": false,
+      "getable": true,
+      "uiComponent": "sensor",
+      "units": {
+        "en": "°C"
+      },
+      "icon": "/assets/temperature_icon.svg"
+    },
+    "my_thermostat_mode": {
+      "title": {
+        "en": "Thermostat Mode"
+      },
+      "type": "enum",
+      "setable": true,
+      "getable": true,
+      "uiComponent": "picker",
+      "values": [
+        {
+          "id": "off",
+          "title": {
+            "en": "Off"
+          }
+        },
+        {
+          "id": "auto",
+          "title": {
+            "en": "Auto"
+          }
+        },
+        {
+          "id": "heat",
+          "title": {
+            "en": "Manual"
+          }
+        },
+        {
+          "id": "dry",
+          "title": {
+            "en": "Dry"
+          }
+        }
+      ]
+    },
+    "my_thermostat_room_sensor": {
+      "title": {
+        "en": "Room Sensor"
+      },
+      "type": "number",
+      "setable": false,
+      "getable": true,
+      "uiComponent": "sensor",
+      "units": {
+        "en": "°C"
+      },
+      "icon": "/assets/temperature_icon.svg"
+    }
+  }
+}
